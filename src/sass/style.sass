@@ -1,0 +1,30 @@
+@import "@var"
+@import "./_fonts"
+@import "../components/**/*.sass"
+
+*,*::after,*::before
+    box-sizing: border-box
+    margin: 0
+
+body
+    font-family: Rosatom, sans-serif
+
+main > header.header
+    position: fixed
+    top: 0
+    z-index: 1
+
+.screen
+    display: grid
+    place-items: center
+    height: 100vh
+    width: 100vw
+    position: fixed
+    top: 0
+    left: 0
+    transition: top .6s ease-in-out
+    &:not([active])
+        top: 100vh
+    &[data-number="0"]
+        background: linear-gradient(to left, #E9F3FC, #fff)
+        cursor: url("../assets/cursor/black.png") 19 19, default
