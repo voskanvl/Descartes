@@ -1,2 +1,50 @@
 .footer-small
-    display: block
+    background-color: $footer-color
+
+    &__container
+        padding: 29px 10px
+
+        @media (width > 1024px)
+            display: none
+
+    &__up
+        display: flex
+        align-items: center
+        justify-content: space-between
+        border-bottom: 1px solid #fff
+        padding: 0 0 24px
+
+    &__middle
+        display: flex
+        align-items: flex-start
+        justify-content: space-between
+        flex-wrap: wrap
+        gap: 46px 20px
+        margin-top: 33px
+
+    &__down
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__nav
+        @extend .footer__nav
+        font-size: 15px
+
+    &__block
+        display: flex
+        flex-direction: column
+        row-gap: 10px
+
+        & > h2
+            font-size: 20px
+
+    &__controls
+        display: flex
+        column-gap: 2px
+
+        & > button
+            border-radius: 5px
+
+    &__socials-icons
+        @extend .footer__socials-icons

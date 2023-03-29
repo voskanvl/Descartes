@@ -1,3 +1,7 @@
-.logo 
-    a(href="/")
-        img(src="../../../assets/svg/logo.svg" alt="Descart")
+mixin logo(x) 
+    if  x==="small"
+        a(href="/")
+            img(src="../../../assets/svg/logo-small.svg" alt="Descart")
+    else
+        a(href="/")
+            img(src="../../../assets/svg/logo.svg" alt="Descart")
