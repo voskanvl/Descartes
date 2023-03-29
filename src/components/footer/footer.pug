@@ -1,0 +1,39 @@
+include ../button-el/button-el.pug
+.footer__container 
+    .footer__up.footer__grid
+        include ../logo/logo.pug
+        p Навигация
+        p Как купить
+        p Контакты
+    .footer__middle.footer__grid.footer__grid--start
+        .footer__socials 
+            p Социальные сети
+            .footer__socials-icons 
+                a(href="https://youtube.com")
+                    img(src="../../../assets/svg/socials/youtube.svg" alt="youtube")
+                a(href="https://youtube.com")
+                    img(src="../../../assets/svg/socials/vk.svg" alt="youtube")
+        ul.footer__nav.footer__navigation
+            each i in nav 
+                li 
+                    a(href= i.href)= i.name
+        ul.footer__nav.footer__bye 
+            each i in bye 
+                li 
+                    a(href= i.href)= i.name
+        ul.footer__nav.footer__contacts
+            li= common.address 
+            li
+                a(href= "tel:"+common.phone)= common.phone    
+        ul.footer__nav.footer__buttons 
+            +buttonEl("white","Перейти в каталог" )
+            +buttonEl("transparent","Заказать звонок" )
+
+    .footer__down.footer__grid
+        p.footer__own Dekart.ru © 2023
+        p 
+        p 
+        p Создание и разработка сайта
+        p.footer__developer 
+            a(href="https://russianws.ru")
+                img(src="../../../assets/images/developer.png")

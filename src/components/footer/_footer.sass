@@ -1,0 +1,48 @@
+.footer
+    display: block
+    background-color: $footer-color
+    color: #fff
+    font-size: 20px
+    font-weight: bold
+
+    &__container
+        padding: 24px 40px
+
+    &__up
+        border-bottom: 1px solid #fff
+        padding: 1em 0
+
+    &__middle
+        padding: 62px 0
+        font-weight: 500
+
+    &__grid
+        display: grid
+        grid-template-columns: 1fr 1fr 2.5fr .7fr 1fr
+        place-items: center start
+        column-gap: 10px
+
+        &--start
+            place-items: start
+
+        &--center
+            place-items: center start
+
+    &__socials-icons
+        margin-top: 9px
+        display: flex
+        column-gap: 6px
+
+    &__nav
+        list-style: none
+        padding: 0
+        display: flex
+        flex-direction: column
+        row-gap: 5px
+
+        & > li > a
+            color: #fff
+            text-decoration: none
+
+    &__developer
+        place-self: center end
