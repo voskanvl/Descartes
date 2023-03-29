@@ -4,6 +4,7 @@ include ../button-el/button-el.pug
         include ../logo/logo.pug
         p Навигация
         p Как купить
+        p
         p Контакты
     .footer__middle.footer__grid.footer__grid--start
         .footer__socials 
@@ -21,6 +22,7 @@ include ../button-el/button-el.pug
             each i in bye 
                 li 
                     a(href= i.href)= i.name
+        p
         ul.footer__nav.footer__contacts
             li= common.address 
             li
@@ -33,6 +35,7 @@ include ../button-el/button-el.pug
         p.footer__own Dekart.ru © 2023
         p 
         p 
+        P
         p Создание и разработка сайта
         p.footer__developer 
             a(href="https://russianws.ru")

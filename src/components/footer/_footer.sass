@@ -17,10 +17,13 @@
         font-weight: 500
 
     &__grid
+        width: 100%
         display: grid
-        grid-template-columns: 1fr 1fr 2.5fr .7fr 1fr
+        grid-template-columns: 15% 15% 30% auto minmax(160px,11%) minmax(237px,15%)
         place-items: center start
         column-gap: 10px
+        @media (width <= 1440px)
+            grid-template-columns: 15% 15% auto 0% minmax(160px,11%) minmax(237px,15%)
 
         &--start
             place-items: start
@@ -44,5 +47,15 @@
             color: #fff
             text-decoration: none
 
+    &__contacts
+        & a
+            white-space: nowrap
+
+    &__buttons
+        place-self: start end
+
     &__developer
         place-self: center end
+
+    @media (width <= 1024px)
+        display: none
