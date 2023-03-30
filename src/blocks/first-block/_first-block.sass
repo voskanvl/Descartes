@@ -3,9 +3,11 @@
 
     &__container
         padding: 267px 0 437px 40px
+        @media (width <= 768px)
+            padding: 176px 0 285px 40px
 
     &__text
-        font-size: 40px
+        font-size: clamp(15px,15 / 1024 * 100vw,40px)
         width: min(1237px, 96%)
         margin: 0 auto
 
@@ -13,7 +15,7 @@
         position: absolute
         top: 0
         height: 0
-        width: 100%
+        width: calc(100vw - 40px)
         height: 100%
 
     &__brick
@@ -26,31 +28,48 @@
             background: url("../../../assets/images/bricks/Frame 442.png")
             top: 80px
             left: pw(929)
-            width: 290px
+            width: max(150px,pw(290))
             aspect-ratio: 290 / 96
+            @media (width <= 768px)
+                top: 96px
+
         &--right
             background: url("../../../assets/images/bricks/Frame 19.png")
             top: 375px
             right: 0
             width: 330px
             aspect-ratio: 330 / 208
+            @media (width <= 768px)
+                display: none
         &--down
             background: url("../../../assets/images/bricks/Frame 24.png")
             top: 583px
             left: pw(350)
             width: 290px
             aspect-ratio: 290 / 142
+            @media (width <= 768px)
+                display: none
+        &--hidden
+            background: url("../../../assets/images/bricks/Frame 445.png")
+            top: 294px
+            left: 0
+            width: 180px
+            aspect-ratio: 1
+            @media (width > 768px)
+                display: none
 
     &__decking
         position: absolute
-        top: 219px
-        width: pw(290)
+        top: ph(219)
+        width: max(150px,pw(290))
         aspect-ratio: 290 / 95
         background: #fff
         border-radius: 15px
         display: grid
         place-items: center
         white-space: nowrap
+        @media (width <= 768px)
+            top: 76px
 
     &__decking-mark
         position: absolute
