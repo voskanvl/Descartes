@@ -12,6 +12,11 @@ $search-res: 1246px
     @media (width <= $search-res)
         --large-res: 97px
 
+    @media (width <= 768px)
+        --large-res: 83px
+        left: 50%
+        translate: -50% 0
+
     & > #main-menu-toggler
         position: absolute
         height: var(--large-res)
@@ -32,6 +37,15 @@ $search-res: 1246px
         background: $menu-color
         display: grid
         place-items: center
+        background-image: url("../../../assets/icons/burger.svg")
+        background-repeat: no-repeat
+        background-position: center
+
+        @media (width <= 768px)
+            background: #0000
+            background-image: url("../../../assets/icons/burger-white.svg")
+            background-repeat: no-repeat
+            background-position: center
 
     &__list
         padding: 0 30px
@@ -52,6 +66,9 @@ $search-res: 1246px
         &:hover
             width: $width-menu
             box-shadow: 10px 0 20px -12px #0007
+
+        @media (width <= $search-res)
+            padding: 0 15px
 
     &__item
         display: flex
@@ -87,3 +104,11 @@ $search-res: 1246px
             padding: 1em
             z-index: -1
             translate: $width-menu 0
+
+        @media (width <= 1440px)
+            width: calc(75vw - $width-menu)
+        @media (width <= 1200px)
+            width: calc(100vw - $width-menu)
+
+    @media (width <= 768px)
+        display: none
