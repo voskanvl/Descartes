@@ -19,7 +19,42 @@ export default function slides() {
         },
     };
 
+    const partners: OptionSlide = {
+        elementName: "#partners",
+        elementElement: document.querySelector("#partners")! as HTMLElement,
+        options: {
+            type: "loop",
+            arrows: false,
+            perPage: 6,
+            perMove: 1,
+            pagination: false,
+            breakpoints: {
+                1880: {
+                    perPage: 5,
+                },
+                1440: {
+                    perPage: 4,
+                },
+                1130: {
+                    perPage: 3,
+                },
+                842: {
+                    perPage: 2,
+                },
+                560: {
+                    perPage: 1,
+                    focus: "center",
+                },
+            },
+        },
+        controls: {
+            left: document.querySelector<HTMLElement>(".partners__slider-button--left")!,
+            right: document.querySelector<HTMLElement>(".partners__slider-button--right")!,
+        },
+    };
+
     return new SlideClass({
         catalog,
+        partners,
     });
 }

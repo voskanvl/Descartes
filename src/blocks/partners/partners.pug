@@ -1,0 +1,12 @@
+include ../../components/num-title/num-title.pug
+include ../../pug/splides.pug
+.partners 
+    .partners__container 
+        +numTitle("04")
+            | Партнеры
+        .partners__slider
+            .partners__slider-button.partners__slider-button--left
+            +splide("partners", partners)
+                .partners__panel 
+                    img(src= val.src, alt="partner")
+            .partners__slider-button.partners__slider-button--right
