@@ -3,23 +3,29 @@ catalog:
       - Комплектующие
       - для ДПК
     img: "../../assets/images/catalog/Group 1289.png"
+    href: "#"
   - name: 
       - Террасная доска
       - (Декинг) из ДПК
     img: "../../assets/images/catalog/terrasnaya_doska_ekodek_ecodeck-venge 1.png"
+    href: "#"
   - name: 
       - Угловые и торцевые 
       - элементы
     img: "../../assets/images/catalog/Mask group.png"
+    href: "#"
   - name: 
       - Ступени
       - из ДПК
     img: "../../assets/images/catalog/aleZ4raxxr6vVUSzwecaTxBBxrolQ8y8 1.png"
+    href: "#"
   - name: 
       - Опоры для лаг
       - и плитки
     img: "../../assets/images/catalog/opory_dlya_lag_i_plitki.png"
+    href: "#"
   - name: 
       - Средства
       - для ухода
     img: "../../assets/images/catalog/sredstva-dlya-yhoda-za-dpk.png"
+    href: "#"

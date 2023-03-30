@@ -1,0 +1,64 @@
+.first-block
+    position: relative
+
+    &__container
+        padding: 267px 0 437px 40px
+
+    &__text
+        font-size: 40px
+        width: min(1237px, 96%)
+        margin: 0 auto
+
+    &__bricks
+        position: absolute
+        top: 0
+        height: 0
+        width: 100%
+        height: 100%
+
+    &__brick
+        position: absolute
+        border-radius: 10px
+        overflow: hidden
+        z-index: -1
+
+        &--up
+            background: url("../../../assets/images/bricks/Frame 442.png")
+            top: 80px
+            left: pw(929)
+            width: 290px
+            aspect-ratio: 290 / 96
+        &--right
+            background: url("../../../assets/images/bricks/Frame 19.png")
+            top: 375px
+            right: 0
+            width: 330px
+            aspect-ratio: 330 / 208
+        &--down
+            background: url("../../../assets/images/bricks/Frame 24.png")
+            top: 583px
+            left: pw(350)
+            width: 290px
+            aspect-ratio: 290 / 142
+
+    &__decking
+        position: absolute
+        top: 219px
+        width: pw(290)
+        aspect-ratio: 290 / 95
+        background: #fff
+        border-radius: 15px
+        display: grid
+        place-items: center
+        white-space: nowrap
+
+    &__decking-mark
+        position: absolute
+        width: 38px
+        aspect-ratio: 1
+        right: -3em
+        top: -3em
+        background: #fff
+        display: grid
+        place-items: center
+        border-radius: 10px

@@ -9,7 +9,8 @@ include ../../pug/splides.pug
             p Каталог
             p товаров
         each i in catalog 
-            +panel(i.name,i.img)
+            a(href= i.href)
+                +panel(i.name,i.img)
 
     .catalog__slider
         .catalog__slider-header
@@ -18,5 +19,6 @@ include ../../pug/splides.pug
                 p товаров
             +sliderControls()
         +splide("catalog", catalog)
-            +panel(val.name,val.img)
+            a(href= val.href)
+                +panel(val.name,val.img)
 
