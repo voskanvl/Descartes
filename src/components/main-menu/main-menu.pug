@@ -1,0 +1,17 @@
+.main-menu
+    input#main-menu-toggler(type="checkbox" name="" checked)
+    .main-menu__head 
+        img(src="../../../assets/icons/burger.svg")
+    ul.main-menu__list
+        each i in mainMenu
+            li.main-menu__item(data-id= i.id)
+                img(src= i.src)
+                .main-menu__caption= i.name
+
+    each i in mainMenu
+        .main-menu__submenu(data-id= i.id)
+            each j in i.sub 
+                p= j 
+                img(src="https://picsum.photos/400" alt="")
+
+

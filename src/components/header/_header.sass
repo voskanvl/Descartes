@@ -1,0 +1,54 @@
+.header
+    width: 100%
+    z-index: 2
+    color: #fff
+    & a
+        color: #fff
+    &__container
+        padding: 29px 0
+        margin: 0 42px
+        border-bottom: 1px solid #fff
+        display: flex
+        align-items: flex-start
+        justify-content: space-between
+        column-gap: 10px
+        rotate: 0deg
+        z-index: 2
+
+    &__logo
+        flex: 0 1 20%
+        display: grid
+        place-items: center end
+
+    &__contacts
+        display: flex
+        column-gap: calc(77/1920*100vw)
+        flex: 0 1 20%
+
+        &  a, & p
+            white-space: nowrap
+
+    &__right
+        display: flex
+        align-items: center
+        column-gap: pw(20)
+
+    &__search
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding-right: 16px
+        border-radius: 10px
+        border: 2px solid #FFF
+
+        & > #search-input
+            background: none
+            border: none
+            padding: 18px 22px
+            color: #fff
+            font-size: 20px
+            margin-right: -40px
+
+            &::placeholder
+                color: #fff7
+                font-size: 20px

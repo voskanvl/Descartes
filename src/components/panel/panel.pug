@@ -1,0 +1,9 @@
+mixin panel(name,src)
+    .panel 
+        .panel__container 
+            img.panel__img(src= src, alt="")
+            .panel__text
+                .panel__name
+                    each i in name
+                        p= i
+                img.panel__arrow(src="../../../assets/icons/arrow-down-right-black.svg") 

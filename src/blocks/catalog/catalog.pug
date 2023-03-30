@@ -1,0 +1,22 @@
+include ../../components/num-title/num-title.pug 
+include ../../components/panel/panel.pug 
+include ../../components/slider-controls/slider-controls.pug 
+include ../../pug/splides.pug
+
+.catalog
+    .catalog__container
+        +numTitle(02)
+            p Каталог
+            p товаров
+        each i in catalog 
+            +panel(i.name,i.img)
+
+    .catalog__slider
+        .catalog__slider-header
+            +numTitle(02)
+                p Каталог
+                p товаров
+            +sliderControls()
+        +splide("catalog", catalog)
+            +panel(val.name,val.img)
+

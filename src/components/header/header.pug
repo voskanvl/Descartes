@@ -1,0 +1,20 @@
+include ../logo/logo.pug
+include ../button-el/button-el.pug
+
+
+include ../main-menu/main-menu.pug
+.header__container
+    .header__logo
+        +logo()
+    .header__contacts
+        div 
+            each i in common.address 
+                p= i 
+        div 
+            a(href="tel:"+common.phone)= common.phone
+    .header__right 
+        .header__search 
+            input#search-input(type="text" name="seacrh" placeholder="Поиск товара")
+            img(src="../../../assets/icons/search.svg" alt="search")
+        +buttonEl("white")
+            | Заказать звонок

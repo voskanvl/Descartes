@@ -1,0 +1,16 @@
+.slider-controls
+    display: flex
+    column-gap: 11px
+
+    &__button
+        aspect-ratio: 1
+        width: clamp(30px,38 / 1024 * 100vw,38px)
+        border-radius: 10px
+        border: none
+        background-repeat: no-repeat
+        background-position: center
+
+        &--left
+            background-image: url("../../../assets/icons/chevron-left.svg")
+        &--right
+            background-image: url("../../../assets/icons/chevron-right.svg")
