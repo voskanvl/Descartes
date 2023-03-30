@@ -14,7 +14,8 @@ const headerRight = document.querySelector<HTMLElement>(".header__right")!;
 searchElement.addEventListener("mouseenter", () => {
     if (innerWidth > 1246) return;
     // headerRight.style.width = "40vw";
-    inputSearchElement.style.width = "240px";
+    inputSearchElement.style.width = "min(40vw, 240px)";
+    inputSearchElement.style.paddingLeft = "22px";
     inputSearchElement.style.opacity = "1";
 });
 searchElement.addEventListener("mouseleave", () => {
@@ -22,4 +23,5 @@ searchElement.addEventListener("mouseleave", () => {
     headerRight.style.width = "";
     inputSearchElement.style.width = "";
     inputSearchElement.style.opacity = "0";
+    inputSearchElement.style.paddingLeft = "";
 });

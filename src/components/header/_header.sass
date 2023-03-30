@@ -7,7 +7,7 @@ $search-res: 1246px
         color: #fff
     &__container
         padding: 29px 0
-        margin: 0 42px
+        margin: 0 pw(42)
         border-bottom: 1px solid #fff
         display: flex
         align-items: flex-start
@@ -58,24 +58,36 @@ $search-res: 1246px
         & > #search-input
             background: none
             border: none
-            padding: 18px 22px
+            padding: 17px 22px
             color: #fff
             font-size: 20px
-            margin-right: -40px
+            outline: none
 
             &::placeholder
                 color: #fff7
                 font-size: 20px
 
             @media (width <= $search-res)
-                width: 60px
+                width: 20px
+                padding-inline: 0
                 opacity: 0
                 transition: width $std-time
 
     &__call
+        position: relative
 
-        & > img
+        & > a
+            position: absolute
+            top: 0
+            left: 0
+            line-height: 0
+            width: 100%
+            height: 100%
+            display: grid
+            place-items: center
+        & img
             width: 40%
+
         &--visible
             @media (width <= $search-res)
                 display: none
@@ -87,8 +99,6 @@ $search-res: 1246px
             padding: 0
             @media (width > $search-res)
                 display: none
-            @media (width <= 768px)
-                width: 30px
 
     &__burger
         display: grid
