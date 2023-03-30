@@ -1,3 +1,4 @@
+$search-res: 1246px
 .header
     width: 100%
     z-index: 2
@@ -14,11 +15,15 @@
         column-gap: 10px
         rotate: 0deg
         z-index: 2
+        @media (width <= $search-res)
+            padding: 10px 0
 
     &__logo
         flex: 0 1 20%
         display: grid
         place-items: center end
+        @media (width <= $search-res)
+            flex: 0 1 30%
 
     &__contacts
         display: flex
@@ -28,10 +33,16 @@
         &  a, & p
             white-space: nowrap
 
+        @media (width <= $search-res)
+            flex-direction: column
+            row-gap: 10px
+
     &__right
         display: flex
         align-items: center
         column-gap: pw(20)
+        @media (width <= $search-res)
+            width: 200px
 
     &__search
         display: flex
@@ -52,3 +63,22 @@
             &::placeholder
                 color: #fff7
                 font-size: 20px
+
+            @media (width <= $search-res)
+                width: 60px
+
+    &__call
+
+        & > img
+            width: 40%
+        &--visible
+            @media (width <= $search-res)
+                display: none
+        &--hidden
+            width: 60px
+            aspect-ratio: 1
+            display: grid
+            place-items: center
+            padding: 0
+            @media (width > $search-res)
+                display: none

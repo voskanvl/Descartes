@@ -16,5 +16,7 @@ include ../main-menu/main-menu.pug
         .header__search 
             input#search-input(type="text" name="seacrh" placeholder="Поиск товара")
             img(src="../../../assets/icons/search.svg" alt="search")
-        +buttonEl("white")
+        +buttonEl("white")(class="header__call header__call--visible")
             | Заказать звонок
+        +buttonEl("white")(class="header__call header__call--hidden")
+            img(src="../../../assets/icons/call.svg")
