@@ -1,0 +1,21 @@
+.feedback-form
+    .feedback-form__container
+        h2.feedback-form__title 
+            div
+                p Наши специалисты
+                p помогут вам подобрать
+                p лучший товар!
+        .feedback-form__hidden
+            p Декинг из древесно-полимерного
+            p композита – наиболее популярный сегмент
+            p рынка среди террасных настилов. 
+
+
+
+        form.feedback-form__form(action="")
+            .feedback-form__form-title Оставьте заявку и мы свяжемся с вами
+            input(type="text" name="name" placeholder="Ваше имя")
+            input(type="tel" name="phone" placeholder="Номер телефона")
+            textarea(name="request" cols="30" rows="10" placeholder="Ваш запрос")
+            +buttonEl("white")
+                | Отправить 

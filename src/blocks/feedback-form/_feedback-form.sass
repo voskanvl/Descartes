@@ -1,0 +1,53 @@
+$toggle-resolution: 768px
+.feedback-form
+    color: #fff
+    background: url("../../../assets/images/tizerr.jpg") no-repeat
+
+    &__container
+        display: grid
+        grid-template-columns: 2fr 1fr
+        padding: 121px 40px 75px 35px
+        @media (width <= $toggle-resolution)
+            grid-template-columns: 100%
+
+    &__title
+        display: grid
+        place-items: center start
+        font-size: clamp(30px,96 / 1920 * 100vw,96px)
+
+    &__form
+        max-width: 600px
+        margin: 0 auto
+        background: rgba(255, 255, 255, 0.2)
+        backdrop-filter: blur(10px)
+        border-radius: 15px
+        display: flex
+        flex-direction: column
+        padding: ph(36) pw(49)
+        @media (width <= $toggle-resolution)
+            max-width: unset
+            margin: 0
+
+        & > input, & > textarea
+            display: block
+            background: #0000
+            border: none
+            border-bottom: 1px solid #fff
+            padding: 24px 0
+            color: #fff
+
+            &::placeholder
+                color: #fff9
+
+        & > .button-el
+            margin-top: 48px
+            width: 290px
+            margin-inline: auto
+
+    &__form-title
+        text-align: center
+
+    &__hidden
+        margin: 13px 0 45px
+        @media (width > $toggle-resolution)
+            display: none
