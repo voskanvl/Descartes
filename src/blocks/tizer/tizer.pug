@@ -2,6 +2,11 @@ include ../../components/panel/panel.pug
 include ../../components/button-el/button-el.pug
 .tizer
     .tizer__container 
+        .tizer__contacts 
+            img(src="../../../assets/icons/geo.svg" alt="geo") 
+            .tizer__address 
+                each i in common.address 
+                    p= i
         .tizer__panels 
             each i,idx in tizer 
                 if idx < tizer.length - 1

@@ -2,6 +2,7 @@ $index: calc(1vw + 1vh)
 $toggle-res: 768px
 .tizer
     background: url("../../../assets/images/tizerr.jpg") no-repeat
+    background-size: cover
     height: calc(100vh + 122px)
     margin-top: -122px
     color: #fff
@@ -16,6 +17,15 @@ $toggle-res: 768px
 
         @media (width <= 768px)
             padding-left: 42px
+
+    &__contacts
+        display: flex
+        align-items: center
+        column-gap: 14px
+        font-size: 15px
+        font-weight: 500
+        @media (width > 768px)
+            display: none
 
     &__panels
         display: grid

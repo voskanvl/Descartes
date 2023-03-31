@@ -1,14 +1,14 @@
 $width-menu: 420px
 $search-res: 1246px
 .main-menu
-    --large-res: 122px
+    --large-res: 120px
     position: absolute
     z-index: 2
     top: 0
     left: 0
 
     @media (width > $search-res)
-        --large-res: 122px
+        --large-res: 120px
     @media (width <= $search-res)
         --large-res: 97px
 
@@ -25,13 +25,10 @@ $search-res: 1246px
         cursor: pointer
 
         &:checked ~ .main-menu__list
-            max-height: calc(100vh - var(--large-res))
+            max-height: calc(100vh - var(--large-res) + 122px)
             padding-top: 38px
-        // &:hover ~ .main-menu__list
-        //     max-height: 600px
 
     &__head
-        // margin: -29px 0 -30px -42px
         height: var(--large-res)
         aspect-ratio: 1
         background: $menu-color
@@ -63,7 +60,17 @@ $search-res: 1246px
         flex-direction: column
         row-gap: 46px
         overflow-y: auto
+        scrollbar-width: thin
 
+        &::-webkit-scrollbar
+            width: 5px
+
+        &::-webkit-scrollbar-thumb
+            background: #fff
+            border-radius: 5px
+
+        &::-webkit-scrollbar-thumb
+            background: #4F3D34
         &:hover
             width: $width-menu
             box-shadow: 10px 0 20px -12px #0007
@@ -94,7 +101,7 @@ $search-res: 1246px
         top: var(--large-res)
         background: $menu-color
         color: $main-color
-        height: calc(100vh - var(--large-res))
+        height: 100vh
         z-index: -1
         overflow: hidden
         transition: $std-time
