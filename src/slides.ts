@@ -67,10 +67,30 @@ export default function slides() {
             right: document.querySelector<HTMLElement>(".specificity__control--right")!,
         },
     };
+    const news: OptionSlide = {
+        elementName: "#news",
+        elementElement: document.querySelector("#news")! as HTMLElement,
+        options: {
+            type: "loop",
+            arrows: false,
+            perPage: 1,
+            perMove: 1,
+            pagination: false,
+        },
+        controls: {
+            left: document.querySelector<HTMLElement>(
+                ".about-news__row .slider-controls__button--left",
+            )!,
+            right: document.querySelector<HTMLElement>(
+                ".about-news__row .slider-controls__button--right",
+            )!,
+        },
+    };
 
     return new SlideClass({
         catalog,
         partners,
         specificity,
+        news,
     });
 }

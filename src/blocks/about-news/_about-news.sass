@@ -1,0 +1,42 @@
+.about-news
+    display: block
+    margin-bottom: 204px
+
+    &__container
+        display: grid
+        grid-template-columns: repeat(2, 49%)
+        column-gap: pw(60)
+        margin: 0 40px
+
+    &__about
+
+        & > .num-title
+            margin-bottom: 32px
+            padding-top: 0
+            & > .num-title__mark
+                top: -2em
+
+    &__row
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: 32px
+
+    &__about-content
+        display: grid
+        grid-auto-flow: column
+        column-gap: pw(20)
+
+        & p
+            margin-bottom: 14px
+
+        & .button-el
+            max-width: 213px
+
+    &__about-text
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+    &__title
+        @extend .num-title__header

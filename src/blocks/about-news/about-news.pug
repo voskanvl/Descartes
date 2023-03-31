@@ -1,0 +1,26 @@
+include ../../pug/splides.pug
+include ../../components/slider-controls/slider-controls.pug
+include ../../components/button-el/button-el.pug
+include ../../components/num-title/num-title.pug
+.about-news
+    .about-news__container
+        .about-news__about
+            +numTitle("03")
+                |О компании
+            .about-news__about-content 
+                img(src="../../../assets/images/Frame 20.png" alt="Frame 20")
+                .about-news__about-text 
+                    .about-news__about-p
+                        p Компания ГАРДЕК с 2009 года является производителем и продавцом товаров для летних кафе, эксплуатируемых кровель, пляжных зон и участков загородных домов. 
+                        p Всё что связано с жизнью и отдыхом вне дома, ёмко отражает английская фраза OUTDOOR LIFE, вошедшая в наш слоган
+                    +buttonEl("white")
+                        | Подробнее
+        .about-news__news
+            .about-news__row
+                h2.about-news__title Новости
+                +sliderControls()
+            +splide("news",[1])
+                include ../../components/news/news.pug
+
+
+
