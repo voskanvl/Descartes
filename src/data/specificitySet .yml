@@ -1,0 +1,7 @@
+specificitySet:
+  - src: "../../assets/svg/specificity/0.svg"
+    type: open
+  - src: "../../assets/svg/specificity/1.svg"
+    type: close
+  - src: "../../assets/svg/specificity/2.svg"
+    type: open

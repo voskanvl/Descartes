@@ -1,0 +1,72 @@
+.specificity
+    background: url("../../../assets/images/specificity.jpg") no-repeat
+    background-size: cover
+
+    color: #fff
+
+    &__container
+        padding: 57px 43px
+        display: grid
+        grid-template-columns: 30% 50%
+        column-gap: pw(81)
+        place-items: center start
+
+    &__words
+        margin-bottom: 183px
+
+    &__slider
+        width: 100%
+
+    &__controls
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__buttons
+        display: flex
+        align-items: center
+        column-gap: pw(11)
+
+    &__control
+        width: 38px
+        height: 38px
+        border: 2px solid #fff
+        border-radius: 10px
+        display: grid
+        place-items: center
+        cursor: pointer
+        user-select: none
+
+        & > img
+            width: 80%
+
+    &__set
+        display: flex
+        column-gap: 21px
+
+    &__blank
+        width: 100%
+        aspect-ratio: 1
+        display: grid
+        place-items: center
+        background: #fff2
+        backdrop-filter: blur(10px)
+        border-radius: 10px
+
+        &[type="close"]
+            background: #5F5F5F
+
+    &__text
+        display: grid
+        grid-template-columns: repeat(3, 32%)
+        gap: 31px 48px
+
+    &__cell
+        &:nth-child(4)
+            grid-column-start: 2
+
+    &__title
+        font-size: clamp(30px, 64 / 1920 * 100vw,64px)
+        font-weight: 500
+        line-height: 107.1%
+        margin-bottom: 101px

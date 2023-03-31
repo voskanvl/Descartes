@@ -52,9 +52,25 @@ export default function slides() {
             right: document.querySelector<HTMLElement>(".partners__slider-button--right")!,
         },
     };
+    const specificity: OptionSlide = {
+        elementName: "#specificity",
+        elementElement: document.querySelector("#specificity")! as HTMLElement,
+        options: {
+            type: "loop",
+            arrows: false,
+            perPage: 1,
+            perMove: 1,
+            pagination: false,
+        },
+        controls: {
+            left: document.querySelector<HTMLElement>(".specificity__control--left")!,
+            right: document.querySelector<HTMLElement>(".specificity__control--right")!,
+        },
+    };
 
     return new SlideClass({
         catalog,
         partners,
+        specificity,
     });
 }

@@ -5,7 +5,12 @@ import switchSubmenu from "./components/main-menu/main-menu";
 import slides from "./slides";
 
 switchSubmenu();
-slides();
+const slidesInstance = slides();
+const specificitySplide = slidesInstance.splides["specificity"];
+const monitorElement = document.querySelector<HTMLElement>(".specificity__monitor")!;
+specificitySplide.on("move", index => {
+    monitorElement.innerText = `${index + 1}/${specificitySplide.length}`;
+});
 
 const searchElement = document.querySelector<HTMLElement>(".header__search")!;
 const inputSearchElement = document.querySelector<HTMLElement>("#search-input")!;
