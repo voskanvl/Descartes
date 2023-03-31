@@ -67,9 +67,10 @@ export default function slides() {
             right: document.querySelector<HTMLElement>(".specificity__control--right")!,
         },
     };
+
     const news: OptionSlide = {
         elementName: "#news",
-        elementElement: document.querySelector("#news")! as HTMLElement,
+        elementElement: document.querySelector<HTMLElement>("#news")!,
         options: {
             type: "loop",
             arrows: false,
@@ -79,10 +80,10 @@ export default function slides() {
         },
         controls: {
             left: document.querySelector<HTMLElement>(
-                ".about-news__row .slider-controls__button--left",
+                ".slider-controls__button--left.about-news__button",
             )!,
             right: document.querySelector<HTMLElement>(
-                ".about-news__row .slider-controls__button--right",
+                ".slider-controls__button--right.about-news__button",
             )!,
         },
     };

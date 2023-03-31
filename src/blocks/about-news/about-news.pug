@@ -18,8 +18,8 @@ include ../../components/num-title/num-title.pug
         .about-news__news
             .about-news__row
                 h2.about-news__title Новости
-                +sliderControls()
-            +splide("news",[1])
+                +sliderControls()(class="about-news__button")
+            +splide("news",[1,2,3])
                 include ../../components/news/news.pug
 
 
