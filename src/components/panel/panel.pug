@@ -1,9 +1,12 @@
-mixin panel(name,src)
-    .panel 
+mixin panel(name,src,arrow="black")
+    .panel&attributes(attributes) 
         .panel__container 
             img.panel__img(src= src, alt="")
             .panel__text
                 .panel__name
                     each i in name
                         p= i
-                img.panel__arrow(src="../../../assets/icons/arrow-down-right-black.svg") 
+                if arrow==="black"
+                    img.panel__arrow(src="../../../assets/icons/arrow-down-right-black.svg")
+                else  
+                    img.panel__arrow(src="../../../assets/icons/arrow-down-right.svg")
