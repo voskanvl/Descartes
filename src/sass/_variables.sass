@@ -8,6 +8,16 @@
 @function ph($x)
     @return calc($x / 1010 *100vh)
 
+=mq1024()
+    @media (width <= 1024px)
+        @content
+=mq768()
+    @media (width <= 768px)
+        @content
+=mq530()
+    @media (width <= 530px)
+        @content
+
 $footer-color: #A89D94
 $main-color: #242424
 $body-color: #E8E8E8

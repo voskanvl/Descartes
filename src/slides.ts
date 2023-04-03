@@ -8,6 +8,11 @@ export default function slides() {
             arrows: false,
             perPage: 2,
             pagination: false,
+            breakpoints: {
+                560: {
+                    perPage: 1,
+                },
+            },
         },
         controls: {
             left: document.querySelector<HTMLElement>(
@@ -88,10 +93,31 @@ export default function slides() {
         },
     };
 
+    const newsSmall: OptionSlide = {
+        elementName: "#news-small",
+        elementElement: document.querySelector<HTMLElement>("#news-small")!,
+        options: {
+            type: "loop",
+            arrows: false,
+            perPage: 1,
+            perMove: 1,
+            pagination: false,
+        },
+        controls: {
+            left: document.querySelector<HTMLElement>(
+                ".slider-controls__button--left.about-news__button",
+            )!,
+            right: document.querySelector<HTMLElement>(
+                ".slider-controls__button--right.about-news__button",
+            )!,
+        },
+    };
+
     return new SlideClass({
         catalog,
         partners,
         specificity,
         news,
+        newsSmall,
     });
 }

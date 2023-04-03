@@ -1,3 +1,7 @@
+@mixin mediaSwitch
+    @media (width <= $toggle-res) or (height <= 685px)
+        @content
+
 $index: calc(1vw + 1vh)
 $toggle-res: 768px
 .tizer
@@ -11,12 +15,13 @@ $toggle-res: 768px
         font-size: max(12px,calc($index * 0.7))
 
     &__container
-        padding: calc(121px + 10vh) 42px 47px calc(202 / 1440 * 100vw)
+        margin: 0 42px 47px calc(202 / 1440 * 100vw)
         position: relative
         height: 100%
 
         @media (width <= 768px)
-            padding-left: 42px
+            padding-left: max(1rem,pw(42))
+            margin: 0 pw(42) calc(202 / 1440 * 100vw)
 
     &__contacts
         display: flex
@@ -24,8 +29,12 @@ $toggle-res: 768px
         column-gap: 14px
         font-size: 15px
         font-weight: 500
+        position: absolute
+        top: 15%
         @media (width > 768px)
             display: none
+        @media (height <= 660px)
+            top: 116px
 
     &__panels
         display: grid
@@ -35,7 +44,7 @@ $toggle-res: 768px
         position: absolute
         bottom: 47px
         right: 42px
-        @media (width <= $toggle-res) or (height <= 685px)
+        +mediaSwitch
             // bottom: unset
             // top: 392px
             display: none
@@ -67,10 +76,7 @@ $toggle-res: 768px
     &__main
         position: absolute
         bottom: 47px
-        // @media (width <= $toggle-res) or (height <= 685px)
-        //     bottom: unset
-        //     top: 392px
-        @media (width <= $toggle-res)
+        +mediaSwitch
             display: none
 
     &__title
@@ -95,8 +101,14 @@ $toggle-res: 768px
         position: absolute
         width: 88%
         bottom: 1em
-        @media (width <= $toggle-res)
+        max-height: 576px
+
+        +mediaSwitch
             display: block
+
+        @media (height <= 660px)
+            top: 176px
+            bottom: unset
 
         .button-el
             width: 100%
@@ -104,7 +116,11 @@ $toggle-res: 768px
     &__mobile-grid
         display: grid
         grid-template-columns: 49% auto
+        grid-template-rows: repeat(2, minmax(200px,1fr))
         gap: 22px 21px
+
+        .panel
+            aspect-ratio: unset
 
         .tizer__panel
             &:nth-child(3)

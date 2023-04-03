@@ -2,6 +2,7 @@ include ../../pug/splides.pug
 include ../../components/slider-controls/slider-controls.pug
 include ../../components/button-el/button-el.pug
 include ../../components/num-title/num-title.pug
+include ../../components/news-small/news-small.pug
 .about-news
     .about-news__container
         .about-news__about
@@ -19,8 +20,15 @@ include ../../components/num-title/num-title.pug
             .about-news__row
                 h2.about-news__title Новости
                 +sliderControls()(class="about-news__button")
-            +splide("news",[1,2,3])
-                include ../../components/news/news.pug
+            .about-news__slider.about-news__slider--large
+                +splide("news",[1,2,3])
+                    include ../../components/news/news.pug
+            .about-news__slider.about-news__slider--small
+                +splide("news-small",[1,2,])
+                    if index===0 
+                        +newsSmall("Акция на итальянскую мебель продолжается!!!","../../../assets/images/news/1.jpg", "скидка 10%")
+                    if index===1 
+                        +newsSmall("Новинка от итальянского бренда B:rattan","../../../assets/images/news/1.jpg")
 
 
 

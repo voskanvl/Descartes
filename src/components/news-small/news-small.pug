@@ -1,0 +1,9 @@
+mixin newsSmall(text,src,discount)
+    .news-small
+        .news-small__container 
+            .news-small__right
+                .news-small__image
+                    img(src= src)
+                    if discount
+                        .news-small__mark= discount
+                .news-small__text= text

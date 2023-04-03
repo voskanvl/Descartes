@@ -1,12 +1,16 @@
 .about-news
     display: block
-    margin-bottom: 204px
+    margin-top: ph(204)
 
     &__container
         display: grid
         grid-template-columns: repeat(2, 49%)
         column-gap: pw(60)
-        margin: 0 40px
+        margin: 0 pw(40)
+        +mq1024
+            grid-template-columns: 100%
+            row-gap: ph(50)
+            grid-template-rows: repeat(2, auto)
 
     &__about
 
@@ -15,6 +19,9 @@
             padding-top: 0
             & > .num-title__mark
                 top: -2em
+
+        +mq1024
+            grid-row-start: 2
 
     &__row
         display: flex
@@ -33,6 +40,10 @@
         & .button-el
             max-width: 213px
 
+        +mq768
+            grid-auto-flow: row
+            row-gap: ph(20)
+
     &__about-text
         display: flex
         flex-direction: column
@@ -40,3 +51,12 @@
 
     &__title
         @extend .num-title__header
+
+    &__slider
+        &--large
+            +mq530
+                display: none
+        &--small
+            display: none
+            +mq530
+                display: block
