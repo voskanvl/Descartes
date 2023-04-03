@@ -1,13 +1,16 @@
 @mixin mediaSwitch
     @media (width <= $toggle-res) or (height <= 685px)
         @content
+@mixin mh
+    @media (height <= 685px)
+        @content
 
 $index: calc(1vw + 1vh)
 $toggle-res: 768px
 .tizer
     background: url("../../../assets/images/tizerr.jpg") no-repeat
     background-size: cover
-    height: calc(100vh + 122px)
+    height: 100vh
     // margin-top: -122px
     color: #fff
 
@@ -33,7 +36,7 @@ $toggle-res: 768px
         top: 15%
         @media (width > 768px)
             display: none
-        @media (height <= 660px)
+        +mh
             top: 116px
 
     &__panels
@@ -81,7 +84,7 @@ $toggle-res: 768px
 
     &__title
         font-size: clamp(32px,80 / 1440 * 100vw, 80px)
-        font-size: calc($index * 3)
+        font-size: calc($index * 2.7)
         font-weight: 500
         line-height: 107.1%
         letter-spacing: -0.03em
@@ -100,13 +103,13 @@ $toggle-res: 768px
         display: none
         position: absolute
         width: 88%
-        bottom: 1em
+        bottom: 55px
         max-height: 576px
 
         +mediaSwitch
             display: block
 
-        @media (height <= 660px)
+        +mh
             top: 176px
             bottom: unset
 
@@ -116,8 +119,11 @@ $toggle-res: 768px
     &__mobile-grid
         display: grid
         grid-template-columns: 49% auto
-        grid-template-rows: repeat(2, minmax(200px,1fr))
+        grid-template-rows: repeat(2, minmax(ph(200),1fr))
         gap: 22px 21px
+
+        & > p
+            font-size: clamp(12px,20 / 768 * 100vw, 20px)
 
         .panel
             aspect-ratio: unset

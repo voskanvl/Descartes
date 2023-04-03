@@ -4,7 +4,7 @@
     &__container
         padding: 267px 0 437px 40px
         @media (width <= 768px)
-            padding: 176px 0 ph(285) pw(40)
+            padding: 176px 0 1rem pw(40)
 
     &__text
         font-size: clamp(15px,15 / 1024 * 100vw,40px)
@@ -14,7 +14,6 @@
     &__bricks
         position: absolute
         top: 0
-        height: 0
         width: calc(100vw - 40px)
         height: 100%
 
@@ -53,6 +52,8 @@
                 display: none
         &--hidden
             background: url("../../../assets/images/bricks/Frame 445.png") no-repeat
+            background-size: contain
+            width: 50%
             aspect-ratio: 1
             position: static
             margin-top: 17px

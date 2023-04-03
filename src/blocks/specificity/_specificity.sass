@@ -27,6 +27,11 @@
         width: 100%
         grid-area: slider
 
+        .splide__slide
+            +mq1024
+                display: grid
+                align-items: center
+
     &__controls
         display: flex
         align-items: center
@@ -49,8 +54,8 @@
         cursor: pointer
         user-select: none
 
-        & > img
-            width: 80%
+        img
+            width: 50%
 
     &__set
         display: flex
