@@ -1,0 +1,52 @@
+$left: -1rem
+$up-margin: 81px
+.mobile-menu
+    display: block
+    color: $main-color
+    background: $body-color
+    position: fixed
+    left: $left
+    top: $up-margin
+    width: calc(100% - 2 * $left)
+    max-height: 0
+    overflow: hidden
+    transition: max-height $std-time
+
+    &__container
+        margin: 25px 10px
+
+    &__header
+        font-size: clamp(20px,36 / 768 * 100vw,36px)
+        font-weight: 500
+        margin-bottom: 66px
+
+    &__list
+        padding: 0
+        margin-bottom: ph(214)
+
+    &__item
+        & > a
+            color: $main-color
+            display: flex
+            align-items: center
+            justify-content: space-between
+            padding: ph(10) 0 ph(13)
+            border-top: 1px solid #4b4b4b
+
+        &:last-child
+            border-bottom: 1px solid #4b4b4b
+
+    &__item-left
+        display: flex
+        align-items: center
+        column-gap: 13px
+
+    &__contacts
+        display: flex
+        align-items: flex-end
+        justify-content: space-between
+
+    &__contacts-left
+        & > a
+            color: $main-color
+            display: block

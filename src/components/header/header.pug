@@ -1,5 +1,6 @@
 include ../logo/logo.pug
 include ../button-el/button-el.pug
+include ../mobile-menu/mobile-menu.pug
 
 
 include ../main-menu/main-menu.pug
@@ -13,7 +14,13 @@ include ../main-menu/main-menu.pug
         div 
             a(href="tel:"+common.phone)= common.phone
     .header__burger 
-        img(src="../../../assets/icons/burger-white.svg" alt="burger")
+        input.header__burger-switch(type="checkbox" name="")
+        img.header__burger-img.header__burger-img--open(src="../../../assets/icons/burger-white.svg" alt="burger")
+        img.header__burger-img.header__burger-img--close(src="../../../assets/icons/x-white.svg" alt="burger")
+
+        .header__menu-mobile 
+            +mobileMenu(mainMenu)
+
 
     .header__right 
         .header__search 

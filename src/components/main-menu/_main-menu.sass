@@ -1,7 +1,7 @@
 $width-menu: 420px
 $search-res: 1246px
 .main-menu
-    --large-res: 120px
+    --large-res: 121px
     position: absolute
     z-index: 2
     top: 0
@@ -12,10 +12,10 @@ $search-res: 1246px
     @media (width <= $search-res)
         --large-res: 97px
 
-    @media (width <= 768px)
-        --large-res: 83px
-        left: 50%
-        translate: -50% 0
+    // @media (width <= 768px)
+    //     --large-res: 83px
+    //     left: 50%
+    //     translate: -50% 0
 
     & > #main-menu-toggler
         position: absolute
@@ -25,7 +25,7 @@ $search-res: 1246px
         cursor: pointer
 
         &:checked ~ .main-menu__list
-            max-height: calc(100vh - var(--large-res) + 122px)
+            max-height: calc(100vh - var(--large-res) + 121px)
             padding-top: 38px
 
     &__head
@@ -81,7 +81,7 @@ $search-res: 1246px
     &__item
         display: flex
         align-items: center
-        column-gap: 2em
+        column-gap: 2.5em
         cursor: pointer
 
         &:hover

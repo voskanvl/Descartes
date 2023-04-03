@@ -1,0 +1,19 @@
+mixin mobileMenu(arr)
+    .mobile-menu 
+        .mobile-menu__container 
+            h2.mobile-menu__header КАТАЛОГ ТОВАРОВ
+            ul.mobile-menu__list
+                each i in arr 
+                    li.mobile-menu__item 
+                        a(href= i.href)
+                            .mobile-menu__item-left
+                                img(src= i.src, alt="good")
+                                p= i.name 
+                            img(src="../../../assets/icons/arrow-down-right-black.svg")
+            .mobile-menu__contacts 
+                .mobile-menu__contacts-left
+                    a(href="tel:"+common.phone)= common.phone
+                    a(href="mailto:"+common.email)= common.email
+                .mobile-menu__contacts-social
+                    img(src="../../../assets/svg/socials/youtube-black.svg" alt="youtube")
+                    img(src="../../../assets/svg/socials/vk-black.svg" alt="vk")

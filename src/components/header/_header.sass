@@ -3,6 +3,10 @@ $search-res: 1246px
     width: 100%
     z-index: 2
     color: #fff
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
     & a
         color: #fff
     &__container
@@ -102,9 +106,41 @@ $search-res: 1246px
                 display: none
 
     &__burger
+        width: 23px
+        height: 23px
         display: grid
         place-items: center
         align-self: center
         width: 23px
+        position: relative
         @media (width > 768px)
             display: none
+
+    &__burger-switch
+        position: absolute
+        z-index: 2
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        opacity: 0
+
+        &:checked
+            & ~ .header__burger-img--open
+                opacity: 0
+            & ~ .header__burger-img--close
+                opacity: 1
+            & ~ .header__menu-mobile > .mobile-menu
+                max-height: 100vh
+                height: auto
+
+    &__burger-img
+        position: absolute
+        top: 50%
+        left: 50%
+        translate: -50% -50%
+        opacity: 1
+        transition: opacity $std-time
+
+        &--close
+            opacity: 0
