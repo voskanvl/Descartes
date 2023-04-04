@@ -32,3 +32,21 @@
         display: grid
         grid-template-columns: repeat(4, 24%)
         gap: ph(31) pw(21)
+
+    &__filter
+        border: 2px solid #656565
+        border-radius: 15px
+        padding: ph(31) pw(34)
+        
+        & > *
+            border-top: 2px solid #656565
+            padding-top: 16px
+            padding-bottom: 28px
+
+            &:first-child
+                border-top: none
+            &:last-child
+                border-top: none
+
+            &:nth-last-child(2)
+                border-bottom: 2px solid #656565

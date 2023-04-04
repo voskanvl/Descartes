@@ -19,20 +19,27 @@ const InitialOptions: Required<OptionsType> = {
 const style = (opt: OptionsType) => `
         .${opt.containerClass} {
             position: relative;
-            width: 200px;
-            padding-top: 10px;
+            width: 100%;
+            padding-top: 1em;
           }
-          
+
+          input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+          }
+
           .range {
             pointer-events: none;
             position: absolute;
             height: 0px;
-            width: 200px;
+            width: 100%;
             outline: none;
             top: 0px;
           }
           .range::-webkit-slider-thumb {
-            background-color: #f1f5f7;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #656565;
             border: none;
             border-radius: 50%;
             box-shadow: 0 0 1px 1px #ced4da;
@@ -47,15 +54,16 @@ const style = (opt: OptionsType) => `
           .${opt.rangeTrack}, .${opt.rangeRails} {
             position: absolute;
             height: 3px;
-            background: #000;
-            top: 2px;
+            background: #656565;
+            top: 1px;
             left: 4px;
-            width: 198px;
+            width: calc(100% - 4px);
           }
           
           .${opt.rangeRails} {
-            top: 3px;
+            top: 2px;
             height: 1px;
+            background: #656565;
           }        
         `;
 export default class MultyRange {
@@ -70,7 +78,7 @@ export default class MultyRange {
     private max: number = 100;
     private width: number = 100;
     private _currentMin: number = 0;
-    private _currentMax: number = 0;
+    private _currentMax: number = 100;
     private listeners: ListenerType[] = [];
     private delta = 5;
     constructor(

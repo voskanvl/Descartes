@@ -1,8 +1,11 @@
 include ../accordion/accordion.pug
 include ../checkbox/checkbox.pug
 mixin filter()
-    form.filter
+    form(action="")&attributes(attributes)
         +accordion("Цена")
+            .filter__inputs.filter__price-inputs 
+                input(type="number" name="price-min" value="0")
+                input(type="number" name="price-max" value="100")
             .filter__price
         +accordion("Бренд")
             ul.filter__selection.filter__brand
@@ -25,4 +28,13 @@ mixin filter()
                     li
                         +checkbox(i, "color")
         +accordion("Длина ДПК доски")
+            .filter__inputs.filter__price-inputs 
+                input(type="number" name="length-min" value="2000")
+                input(type="number" name="length-max" value="30000")
             .filter__length
+
+        .filter__buttons 
+            +buttonEl("grey")
+                | Подобрать
+            +buttonEl("greytransparent")
+                | Сбросить

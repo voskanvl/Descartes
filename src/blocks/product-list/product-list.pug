@@ -17,8 +17,7 @@ include ../../components/filter/filter.pug
                         option(value="descent") По уменьшению цены
                         option(value="ascent") По увеличению цены
         .product-list__body 
-            form.product-list__filter
-                +filter
+            +filter(class="product-list__filter")
             .product-list__catalog
                 ul.product-list__list 
                     each i in [..."12345678"]

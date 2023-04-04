@@ -9,3 +9,30 @@
         font-size: 20px
         color: #656565
         margin-block: 16px
+
+    &__buttons
+        display: flex
+        align-items: center
+        justify-content: center
+        column-gap: 15px
+        margin-top: ph(91)
+
+        & > *
+            flex: 1
+
+    &__inputs
+        display: flex
+        position: relative
+        justify-content: space-between
+        & > input
+            width: 40%
+            background: transparent
+            font-size: 20px
+            border: none
+            outline: none
+
+        & > input[name="price-max"],  & > input[name="length-max"]
+            text-align: right
+
+    &__price, &__length
+        margin-top: 18px

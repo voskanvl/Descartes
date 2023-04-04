@@ -3,7 +3,8 @@ import "@splidejs/splide/css";
 
 import switchSubmenu from "./components/main-menu/main-menu";
 import slides from "./slides";
-import MultyRange from "./multyRange";
+
+import initMultiRange from "./initMultiRange";
 
 switchSubmenu();
 const slidesInstance = slides();
@@ -33,8 +34,4 @@ searchElement.addEventListener("mouseleave", () => {
     inputSearchElement.style.paddingLeft = "";
 });
 
-const filterPrice = document.querySelector<HTMLDivElement>(".filter__price");
-const mr = filterPrice && new MultyRange(filterPrice);
-
-const filterLength = document.querySelector<HTMLDivElement>(".filter__length");
-const mr1 = filterLength && new MultyRange(filterLength);
+initMultiRange();
