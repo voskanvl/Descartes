@@ -1,4 +1,6 @@
 export default function switchSubmenu() {
+    const TRIGGER_THRESHOLD = 150;
+
     const mainMenuItems = [...document.querySelectorAll<HTMLElement>(".main-menu__item")];
     const mainSubmenus = [...document.querySelectorAll<HTMLElement>(".main-menu__submenu")];
     const mainMenuList = document.querySelector<HTMLElement>(".main-menu__list");
@@ -94,12 +96,12 @@ export default function switchSubmenu() {
                         "active",
                         "active",
                     );
-            }, 200);
+            }, TRIGGER_THRESHOLD);
         });
     mainMenuList &&
         mainMenuList.addEventListener("mouseleave", () => {
             setTimeout(() => {
                 if (!didSubEnter) mainSubmenus.forEach(e => e.removeAttribute("active"));
-            }, 200);
+            }, TRIGGER_THRESHOLD);
         });
 }
