@@ -5,7 +5,7 @@ include ../components/breads/breads.pug
 block main 
     include ../blocks/tizer-mini/tizer-mini.pug
     .breads-wrap
-        +breads([{name:"Главная", href:"/"},{name:"Каталог", href:"/catalog.html"}])
-    +catalog(catalog,["Категории","товаров"],"01")
+        +breads([{name:"Главная", href:"/"},{name:"Каталог", href:"/catalog.html"},{name:"Террасная доска", href:"/product.html"}])
+    include ../blocks/product-list/product-list.pug
     include ../blocks/feedback-form/feedback-form.pug 
     include ../blocks/popular/popular.pug 

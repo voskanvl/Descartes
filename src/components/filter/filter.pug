@@ -1,0 +1,28 @@
+include ../accordion/accordion.pug
+include ../checkbox/checkbox.pug
+mixin filter()
+    form.filter
+        +accordion("Цена")
+            .filter__price
+        +accordion("Бренд")
+            ul.filter__selection.filter__brand
+                each i in product.brand
+                    li
+                        +checkbox(i,"brand")
+        +accordion("Производитель")
+            ul.filter__selection.filter__vendor
+                each i in product.vendor
+                    li
+                        +checkbox(i, "vendor")
+        +accordion("Материал")
+            ul.filter__selection.filter__material
+                each i in product.material
+                    li
+                        +checkbox(i, "material")
+        +accordion("Цвет")
+            ul.filter__selection.filter__color
+                each i in product.color
+                    li
+                        +checkbox(i, "color")
+        +accordion("Длина ДПК доски")
+            .filter__length

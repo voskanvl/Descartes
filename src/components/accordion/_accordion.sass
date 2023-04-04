@@ -1,0 +1,30 @@
+.accordion
+    position: relative 
+    
+    &__header
+        display: flex
+        column-gap: 11px
+
+    img
+        rotate: 0
+        transition: transform $std-time
+
+
+    input
+        position: absolute
+        top: 0
+        left: 0
+        height: 2em
+        width: 100%
+        opacity: 0
+        
+        &:checked
+            & ~ .accordion__body
+                max-height: 0
+            & ~ .accordion__header > img 
+                rotate: 180deg
+
+    &__body
+        max-height: 30vh
+        overflow: clip
+        transition: max-height $std-time

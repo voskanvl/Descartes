@@ -1,0 +1,34 @@
+=row()
+    display: flex
+    align-items: flex-end
+    justify-content: space-between
+.product-list
+    display: block
+
+    &__container
+        margin-inline: pw(40)
+
+    &__header 
+        +row
+        margin-bottom: ph(76)
+
+    &__controls
+        flex: 1 0 30%
+        +row
+        margin-left: pw(117)
+
+    &__control
+        display: flex
+        align-items: center
+        column-gap: 9px
+        
+
+    &__body
+        display: grid
+        grid-template-columns: 25% auto
+        column-gap: pw(117)
+
+    &__list
+        display: grid
+        grid-template-columns: repeat(4, 24%)
+        gap: ph(31) pw(21)

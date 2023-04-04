@@ -1,0 +1,36 @@
+include ../../components/price-card/price-card.pug
+include ../../components/filter/filter.pug
+.product-list
+    .product-list__container
+        .product-list__header 
+            +numTitle("01")
+                p Террасная доска 
+                p (Декинг) из ДПК
+            .product-list__controls 
+                .product-list__control.product-list__filter--control 
+                    span Фильтр
+                    img(src="../../../assets/icons/plus.svg" alt="plus")
+                .product-list__control.product-list__sort--control 
+                    span Сортировать по:
+                    select(name="sort") 
+                        option(value="popular") По популярности
+                        option(value="descent") По уменьшению цены
+                        option(value="ascent") По увеличению цены
+        .product-list__body 
+            form.product-list__filter
+                +filter
+            .product-list__catalog
+                ul.product-list__list 
+                    each i in [..."12345678"]
+                        -
+                            const val = {
+                                img: "../../assets/images/catalog/terrasnaya_doska_ekodek_ecodeck-venge 1.png",
+                                caption: ["Доска террасная древесно-полимерная композитная Ecodeck (Экодек), 165*23,5"],
+                                price:{
+                                    last: "900 РУБ./ШТ.",
+                                    current: "777 РУБ./ШТ."
+                                }
+                            }
+                        +priceCard(val)
+                +buttonEl()
+                    | Показать еще

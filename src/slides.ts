@@ -125,7 +125,7 @@ export default function slides() {
                 768: {
                     perPage: 2,
                 },
-                425: {
+                500: {
                     perPage: 1,
                 },
             },

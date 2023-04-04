@@ -1,0 +1,19 @@
+product:
+  brand:
+    - Holzhof (Хольцхоф)
+    - Darvolex
+    - Deckron (Декрон)
+    - Ecodeck
+    - NauticPrime
+
+  vendor:
+    - Holzhof (Хольцхоф)
+    - Darvolex
+
+  material:
+    - ДПК
+    - Резина
+
+  color: 
+   - Белый
+   - Цветной
