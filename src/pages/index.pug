@@ -1,9 +1,10 @@
 extends ../pug/templates/template.pug
 include ../components/num-title/num-title.pug
+include ../blocks/catalog/catalog.pug
 block main 
     include ../blocks/tizer/tizer.pug 
     include ../blocks/first-block/first-block.pug 
-    include ../blocks/catalog/catalog.pug
+    +catalog(catalog,["Каталог","товаров"],"02")
     include ../blocks/specificity/specificity.pug
     include ../blocks/about-news/about-news.pug
     include ../blocks/partners/partners.pug 

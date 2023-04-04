@@ -3,22 +3,23 @@ include ../../components/panel/panel.pug
 include ../../components/slider-controls/slider-controls.pug 
 include ../../pug/splides.pug
 
-.catalog
-    .catalog__container
-        +numTitle(02)
-            p Каталог
-            p товаров
-        each i in catalog 
-            a(href= i.href)
-                +panel(i.name,i.img)
+mixin catalog(arr,title, num)
+    .catalog
+        .catalog__container
+            +numTitle(num)
+                each i in title
+                    p= i
+            each i in arr 
+                a(href= i.href)
+                    +panel(i.name,i.img)
 
-    .catalog__slider
-        .catalog__slider-header
-            +numTitle(02)
-                p Каталог
-                p товаров
-            +sliderControls()
-        +splide("catalog", catalog)
-            a(href= val.href)
-                +panel(val.name,val.img)
+        .catalog__slider
+            .catalog__slider-header
+                +numTitle(num)
+                    each i in title
+                        p= i
+                +sliderControls()
+            +splide("catalog", arr)
+                a(href= val.href)
+                    +panel(val.name,val.img)
 

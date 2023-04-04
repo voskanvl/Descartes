@@ -1,0 +1,9 @@
+extends ../pug/templates/template.pug
+include ../components/num-title/num-title.pug
+include ../blocks/catalog/catalog.pug
+block main 
+    include ../blocks/tizer-mini/tizer-mini.pug
+    include ../blocks/breads/breads.pug
+    +catalog(catalog,["Категории","товаров"],"01")
+    include ../blocks/feedback-form/feedback-form.pug 
+    include ../blocks/popular/popular.pug 

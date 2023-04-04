@@ -1,0 +1,14 @@
+include ../../components/num-title/num-title.pug
+include ../../pug/splides.pug
+include ../../components/price-card/price-card.pug
+include ../../components/slider-controls/slider-controls.pug
+.popular 
+    .popular__container 
+        .popular__header
+            +numTitle("02")
+                p Популярные
+                p модели
+            +sliderControls(class="popular__slider-buttons")
+
+        +splide("popular",popular)
+            +priceCard(val)

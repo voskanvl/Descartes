@@ -8,9 +8,10 @@ switchSubmenu();
 const slidesInstance = slides();
 const specificitySplide = slidesInstance.splides["specificity"];
 const monitorElement = document.querySelector<HTMLElement>(".specificity__monitor")!;
-specificitySplide.on("move", index => {
-    monitorElement.innerText = `${index + 1}/${specificitySplide.length}`;
-});
+specificitySplide &&
+    specificitySplide.on("move", index => {
+        monitorElement.innerText = `${index + 1}/${specificitySplide.length}`;
+    });
 
 const searchElement = document.querySelector<HTMLElement>(".header__search")!;
 const inputSearchElement = document.querySelector<HTMLElement>("#search-input")!;

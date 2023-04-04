@@ -1,0 +1,25 @@
+popular:
+  - id: 601
+    img: "../../assets/images/catalog/terrasnaya_doska_ekodek_ecodeck-venge 1.png"
+    caption:
+      - Доска ДПК универсальная 
+      - с тиснением HOLZHOF, 3м, 140*18
+    price:
+      last: 900 РУБ./ШТ.
+      current: 777 РУБ./ШТ.
+  - id: 602
+    img: "../../assets/images/catalog/terrasnaya_doska_ekodek_ecodeck-venge 1.png"
+    caption:
+      - Универсальная доска ДПК 
+      - NauticPrime шовная, 150*18*3000мм
+    price:
+      last: 900 РУБ./ШТ.
+      current: 777 РУБ./ШТ.
+  - id: 603
+    img: "../../assets/images/catalog/terrasnaya_doska_ekodek_ecodeck-venge 1.png"
+    caption:
+      - Доска террасная древесно-полимерная
+      - композитная Ecodeck (Экодек), 165*23,5
+    price:
+      last: 900 РУБ./ШТ.
+      current: 777 РУБ./ШТ.

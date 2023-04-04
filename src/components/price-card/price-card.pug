@@ -1,0 +1,15 @@
+include ../button-el/button-el.pug
+mixin priceCard(item)
+    .price-card
+        img(src= item.img, alt="model")
+        .price-card__container
+            .price-card__content 
+                each i in item.caption 
+                    p= i 
+                .price-card__controls 
+                    +buttonEl("white")
+                        .price-card__price 
+                            strike.price-card__price-last= item.price.last
+                            .price-card__price-current= item.price.current
+                    +buttonEl("white")
+                        | Заказать

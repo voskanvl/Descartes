@@ -112,6 +112,33 @@ export default function slides() {
             )!,
         },
     };
+    const popular: OptionSlide = {
+        elementName: "#popular",
+        elementElement: document.querySelector<HTMLElement>("#popular")!,
+        options: {
+            type: "loop",
+            arrows: false,
+            perPage: 3,
+            perMove: 1,
+            pagination: false,
+            breakpoints: {
+                768: {
+                    perPage: 2,
+                },
+                425: {
+                    perPage: 1,
+                },
+            },
+        },
+        controls: {
+            left: document.querySelector<HTMLElement>(
+                ".slider-controls__button--left.popular__slider-buttons",
+            )!,
+            right: document.querySelector<HTMLElement>(
+                ".slider-controls__button--right.popular__slider-buttons",
+            )!,
+        },
+    };
 
     return new SlideClass({
         catalog,
@@ -119,5 +146,6 @@ export default function slides() {
         specificity,
         news,
         newsSmall,
+        popular,
     });
 }
