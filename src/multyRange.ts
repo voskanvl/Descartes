@@ -81,6 +81,11 @@ export default class MultyRange {
     private _currentMax: number = 100;
     private listeners: ListenerType[] = [];
     private delta = 5;
+
+    private initMin = 0;
+    private initMax = 100;
+    private initWidth = 100;
+
     constructor(
         root: HTMLElement,
         options: OptionsType = InitialOptions,
@@ -164,8 +169,8 @@ export default class MultyRange {
     }
 
     private recalcRangeTrack() {
-        this.rangeTrack.style.left = (this.currentMin / this.width) * 100 + 2 + "%";
-        this.rangeTrack.style.width = `${this.currentMax - this.currentMin - 2}%`;
+        this.rangeTrack.style.left = (this._currentMin / this.width) * 100 + 2 + "%";
+        this.rangeTrack.style.width = `${this._currentMax - this.currentMin - 2}%`;
     }
 
     subscribe(cb: ListenerType) {
@@ -178,28 +183,44 @@ export default class MultyRange {
     get currentMin() {
         return this._currentMin;
     }
-    set currentMin(x: number) {
+    private set currentMin(x: number) {
         this._currentMin = x;
         this.listeners.forEach(e => e(this._currentMin, this._currentMax));
-        this.inputMin.value = x + "";
+        this.inputMin.value = this._currentMin + "";
         this.recalcRangeTrack();
+    }
+    public get valueMin() {
+        return this.initMin + (this.initWidth * this._currentMin) / 100;
+    }
+    public set valueMin(x: number) {
+        this.currentMin = ((x - this.initMin) / this.initWidth) * 100;
     }
     get currentMax() {
         return this._currentMax;
     }
-    set currentMax(x: number) {
+    public get valueMax() {
+        return this.initMin + (this.initWidth * this._currentMax) / 100;
+    }
+    private set currentMax(x: number) {
         this._currentMax = x;
         this.listeners.forEach(e => e(this._currentMin, this._currentMax));
-        this.inputMax.value = x + "";
+        this.inputMax.value = this._currentMax + "";
         this.recalcRangeTrack();
+    }
+    public set valueMax(x: number) {
+        this.currentMax = ((x - this.initMin) / this.initWidth) * 100;
     }
     connectInputs(inputMin: HTMLInputElement | null, inputMax: HTMLInputElement | null) {
         const initMin = (inputMin && +inputMin.value) || 0;
         const initMax = (inputMax && +inputMax.value) || 100;
         const width = initMax - initMin;
+        this.initMin = initMin;
+        this.initMax = initMax;
+        this.initWidth = width;
         this.subscribe((min, max) => {
             inputMin && (inputMin.value = String((initMin + (min / 100) * width) | 0));
             inputMax && (inputMax.value = String((initMin + (max / 100) * width) | 0));
         });
+        return this;
     }
 }
