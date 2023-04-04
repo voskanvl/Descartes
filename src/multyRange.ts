@@ -193,4 +193,13 @@ export default class MultyRange {
         this.inputMax.value = x + "";
         this.recalcRangeTrack();
     }
+    connectInputs(inputMin: HTMLInputElement | null, inputMax: HTMLInputElement | null) {
+        const initMin = (inputMin && +inputMin.value) || 0;
+        const initMax = (inputMax && +inputMax.value) || 100;
+        const width = initMax - initMin;
+        this.subscribe((min, max) => {
+            inputMin && (inputMin.value = String((initMin + (min / 100) * width) | 0));
+            inputMax && (inputMax.value = String((initMin + (max / 100) * width) | 0));
+        });
+    }
 }
