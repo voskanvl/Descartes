@@ -2,6 +2,7 @@ export default function switchSubmenu() {
     const mainMenuItems = [...document.querySelectorAll<HTMLElement>(".main-menu__item")];
     const mainSubmenus = [...document.querySelectorAll<HTMLElement>(".main-menu__submenu")];
     const mainMenuList = document.querySelector<HTMLElement>(".main-menu__list");
+    const mainMenu = document.querySelector<HTMLElement>(".main-menu");
 
     const MenuSubmenuArray = mainMenuItems
         .map(e => {
@@ -49,6 +50,30 @@ export default function switchSubmenu() {
     if (!MenuSubmenuMap)
         throw Error("проблемы с сопоставлением  .main-menu__item .main-menu__submenu");
 
+    mainMenu &&
+        mainMenu.addEventListener("mouseenter", () => {
+            const width = getComputedStyle(mainMenu).getPropertyValue("--width-menu");
+            console.log(width);
+            mainMenuList && (mainMenuList.style.width = width || "420px");
+        });
+    mainMenu &&
+        mainMenu.addEventListener("mouseleave", () => {
+            mainMenuList && (mainMenuList.style.width = "");
+        });
+
+    let didSubEnter = false;
+
+    mainSubmenus &&
+        mainSubmenus.forEach(sub => {
+            sub.addEventListener("mouseenter", () => {
+                didSubEnter = true;
+            });
+            sub.addEventListener("mouseleave", () => {
+                didSubEnter = false;
+                sub.removeAttribute("active");
+            });
+        });
+
     mainMenuList &&
         mainMenuList.addEventListener("mousemove", (event: Event) => {
             const target = event.target as HTMLElement;
@@ -62,12 +87,19 @@ export default function switchSubmenu() {
                 "color:#fff;background:rgb(217, 104, 49);padding:3px;border-radius:2px",
                 MenuSubmenuMap,
             );
-            mainSubmenus.forEach(e => e.removeAttribute("active"));
-            isMenuSubmenuType(MenuSubmenuMap) &&
-                (MenuSubmenuMap as MenuSubmenuType)[id].submenu.setAttribute("active", "active");
+            setTimeout(() => {
+                mainSubmenus.forEach(e => e.removeAttribute("active"));
+                isMenuSubmenuType(MenuSubmenuMap) &&
+                    (MenuSubmenuMap as MenuSubmenuType)[id].submenu.setAttribute(
+                        "active",
+                        "active",
+                    );
+            }, 200);
         });
     mainMenuList &&
         mainMenuList.addEventListener("mouseleave", () => {
-            mainSubmenus.forEach(e => e.removeAttribute("active"));
+            setTimeout(() => {
+                if (!didSubEnter) mainSubmenus.forEach(e => e.removeAttribute("active"));
+            }, 200);
         });
 }
