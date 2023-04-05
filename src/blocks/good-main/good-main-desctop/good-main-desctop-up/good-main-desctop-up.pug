@@ -1,0 +1,26 @@
+.good-main-desctop-up
+    .good-main-desctop-up__container
+        .good-main-desctop-up__left
+            .good-main-desctop-up__left-up
+                h2.good-main-desctop-up__title Доска террасная древесно-полимерная композитная Ecodeck (Экодек), 165*23,5
+                small Код товара: DR4000B 
+                .good-main-desctop-up__colors 
+                    span Цвет:
+                    ul.good-main-desctop-up__thumbs 
+                        each i in goodCharacts.colors
+                            li 
+                                input(type="radio" name="color")
+                                .good-main-desctop-up__thumb(style=`background: ${i};`)
+
+                .good-main-desctop-up__lengths 
+                    span Длина ДПК доски, м:
+                    ul.good-main-desctop-up__thumbs 
+                        each i, idx in [4,6]                                
+                            li 
+                                if idx === 0
+                                    input(type="radio" name="length" checked)
+                                else
+                                    input(type="radio" name="length")
+                                .good-main-desctop-up__length= i
+
+            .good-main-desctop-up__right

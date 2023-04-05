@@ -1,0 +1,12 @@
+extends ../pug/templates/template.pug
+include ../components/num-title/num-title.pug
+include ../blocks/catalog/catalog.pug
+include ../components/breads/breads.pug
+include ../blocks/tizer-mini/tizer-mini.pug
+block main 
+    +tizer-mini("Доска террасная древесно-полимерная композитная Ecodeck (Экодек)")
+    .breads-wrap
+        +breads([{name:"Главная", href:"/"},{name:"Каталог", href:"/catalog.html"},{name:"Террасная доска", href:"/product.html"}, {name:" Доска террасная древесно-полимерная композитная Ecodeck (Экодек)", href:"/good.html"}])
+    include ../blocks/good-main/good-main.pug 
+    include ../blocks/feedback-form/feedback-form.pug 
+    include ../blocks/popular/popular.pug 
