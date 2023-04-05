@@ -1,6 +1,10 @@
-mixin accordion(name)
+mixin accordion(name, close=true)
     .accordion 
-        input(type="checkbox" name="")
+        if close
+            input(type="checkbox" checked)
+        else
+            input(type="checkbox")
+
         .accordion__header 
             span= name 
             img(src="../../../assets/icons/chevron-up.svg")

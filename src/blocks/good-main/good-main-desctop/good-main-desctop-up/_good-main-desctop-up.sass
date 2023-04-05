@@ -8,9 +8,30 @@
 .good-main-desctop-up
     display: block
 
-    &__colors
+    &__container
+        display: grid
+        grid-template-columns: 30% auto
+        column-gap: pw(330)
+        background: #FFFFFF
+        border-radius: 15px
+        padding: ph(29) pw(35)
+
+    &__left
         display: flex
-        align-items: center
+        flex-direction: column
+        row-gap: ph(112)
+
+    &__left-up,&__left-block
+        display: flex
+        flex-direction: column
+        row-gap: ph(37)
+
+    &__left-block
+        row-gap: 15px
+
+    &__colors, &__lengths
+        display: grid
+        grid-template-columns: repeat(2, 50%)
 
     &__thumbs
         list-style: none
@@ -20,12 +41,12 @@
         & > li
             position: relative
 
-            input[name="color"]
+            input
                 +expand
                 opacity: 0
                 z-index: 2
                 cursor: pointer
-                
+
                 &:checked + .good-main-desctop-up__thumb::after
                     content: "\2713"
                     color: #fff
@@ -35,6 +56,11 @@
                     top: 50%
                     translate: -50% -50%
 
+                &:checked + .good-main-desctop-up__length
+                    background: #656565
+                    color: #fff
+                    border: 1px solid #656565
+
     &__thumb
         width: 23px
         aspect-ratio: 1
@@ -43,26 +69,6 @@
         display: grid
         place-items: center
 
-    &__lengths
-        list-style: none
-        display: flex
-        column-gap: 3px
-        padding-left: 0
-        &  li
-            position: relative
-
-            input[name="length"]
-                +expand
-                opacity: 0
-                z-index: 2
-                cursor: pointer
-                
-                &:checked + .good-main-desctop-up__length
-                    background: #656565
-                    color: #fff
-                    border: 1px solid #656565
-
-            
     &__length
         border: 1px solid #242424
         border-radius: 5px
@@ -70,3 +76,53 @@
         aspect-ratio: 1
         display: grid
         place-items: center
+
+    &__charact-list
+        list-style: none
+        padding-left: 0
+        overflow-y: scroll
+        max-height: 300px
+        scrollbar-width: thin
+        padding-right: 1em
+        scroll-behavior: smooth
+
+        &::-webkit-scrollbar
+            width: 3px
+        &::-webkit-scrollbar-track
+            background: #fff
+        &::-webkit-scrollbar-thumb
+            background: #000
+
+    &__charact-item
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 25px 0 20px
+        border-bottom: 1px solid #000
+
+        &:last-child
+            margin-bottom: 30vh
+
+    &__price-body,  &__price-header
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__price-header
+        padding-bottom: 15px
+        margin-top: ph(36)
+        border-bottom: 1px solid #000
+        & > *
+            text-decoration: underline
+
+    &__price-body
+        margin-top: 9px
+
+        & > .button-el
+            width: pw(251)
+            font-size: 20px
+
+    &__charact-all
+        display: flex
+        align-items: center
+        column-gap: 15px

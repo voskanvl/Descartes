@@ -5,6 +5,8 @@ import switchSubmenu from "./components/main-menu/main-menu";
 import slides from "./slides";
 
 import initMultiRange from "./initMultiRange";
+import gallery from "./ts/gallery";
+import scrollCharact from "./ts/scrollCharact";
 
 switchSubmenu();
 const slidesInstance = slides();
@@ -43,3 +45,13 @@ filterControl &&
         if (innerWidth > 1024) return;
         filter && filter.toggleAttribute("active");
     });
+
+gallery();
+scrollCharact(
+    document.querySelector<HTMLElement>(".good-main-desctop-up__charact-all"),
+    document.querySelector<HTMLElement>(".good-main-desctop-up__charact-list"),
+);
+scrollCharact(
+    document.querySelector<HTMLElement>(".good-main-desctop-down__charact-all"),
+    document.querySelector<HTMLElement>(".good-main-desctop-down__description-body"),
+);

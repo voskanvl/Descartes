@@ -1,26 +1,49 @@
+include ../../../../components/gallery/gallery.pug
 .good-main-desctop-up
     .good-main-desctop-up__container
         .good-main-desctop-up__left
             .good-main-desctop-up__left-up
-                h2.good-main-desctop-up__title Доска террасная древесно-полимерная композитная Ecodeck (Экодек), 165*23,5
-                small Код товара: DR4000B 
-                .good-main-desctop-up__colors 
-                    span Цвет:
-                    ul.good-main-desctop-up__thumbs 
-                        each i in goodCharacts.colors
-                            li 
-                                input(type="radio" name="color")
-                                .good-main-desctop-up__thumb(style=`background: ${i};`)
+                .good-main-desctop-up__left-block
+                    h2.good-main-desctop-up__title Доска террасная древесно-полимерная композитная Ecodeck (Экодек), 165*23,5
+                    small Код товара: DR4000B 
+                .good-main-desctop-up__left-block
+                    .good-main-desctop-up__colors 
+                        span Цвет:
+                        ul.good-main-desctop-up__thumbs 
+                            each i in goodCharacts.colors
+                                li.good-main-desctop-up__thumb-item  
+                                    input(type="radio" name="color")
+                                    .good-main-desctop-up__thumb(style=`background: ${i};`)
 
-                .good-main-desctop-up__lengths 
-                    span Длина ДПК доски, м:
-                    ul.good-main-desctop-up__thumbs 
-                        each i, idx in [4,6]                                
-                            li 
-                                if idx === 0
-                                    input(type="radio" name="length" checked)
-                                else
-                                    input(type="radio" name="length")
-                                .good-main-desctop-up__length= i
+                    .good-main-desctop-up__lengths 
+                        span Длина ДПК доски, м:
+                        ul.good-main-desctop-up__thumbs 
+                            each i, idx in [4,6]                                
+                                li.good-main-desctop-up__thumb-item 
+                                    if idx === 0
+                                        input(type="radio" name="length" checked)
+                                    else
+                                        input(type="radio" name="length")
+                                    .good-main-desctop-up__length= i
 
-            .good-main-desctop-up__right
+            .good-main-desctop-up__left-down
+                ul.good-main-desctop-up__charact-list
+                    each i in Object.entries(goodCharacts.characts)
+                        li.good-main-desctop-up__charact-item 
+                            span #{i[0]}:
+                            span= i[1]
+
+                .good-main-desctop-up__charact-all 
+                    span Все характеристики
+                    img(src="../../../../../assets/icons/chevron-up.svg" alt="chevron" style="transform: rotate(180deg);")
+
+        .good-main-desctop-up__right
+            +gallery(goodCharacts.gallery)
+            .good-main-desctop-up__price-header
+                span В наличие
+                span Доставка и оплата
+            .good-main-desctop-up__price-body
+                .good-main-desctop-up__price-costs 
+                    strike 800 РУБ./ШТ.
+                    span 777 РУБ./ШТ.
+                +buttonEl("gray") Заказать

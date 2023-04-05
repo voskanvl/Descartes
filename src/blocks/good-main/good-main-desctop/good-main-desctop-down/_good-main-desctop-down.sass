@@ -1,2 +1,32 @@
-.good-main-desctop__down
-    display: block
+.good-main-desctop-down
+    margin-top: ph(59)
+
+    &__container
+        display: flex
+        align-items: flex-start
+        justify-content: space-between
+
+        &>*
+            flex: 0 1 30%
+
+    &__right
+        & > *
+            padding: 24px 0 20px
+            border-bottom: 1px solid #000
+        & > *:first-child
+            padding-top: 0
+
+    &__description-header
+        margin-bottom: 18px
+
+    &__description-body
+        @extend .good-main-desctop-up__charact-list
+
+        & > * + *
+            margin-top: 1rem
+
+        & > *:last-child
+            margin-bottom: 30vh
+
+    &__charact-all
+        @extend .good-main-desctop-up__charact-all
