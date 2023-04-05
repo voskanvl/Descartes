@@ -1,7 +1,7 @@
 export default function gallery() {
     const thumbnails = document.querySelectorAll<HTMLElement>(".gallery__thumbnail");
     const main = document.querySelector<HTMLImageElement>(".gallery__main > img");
-    if (!main) throw Error("there isn't .gallery__main > img");
+    if (!main) return;
 
     const thumbnailsClear = () => {
         thumbnails && thumbnails.forEach(thumbnail => thumbnail.removeAttribute("active"));
