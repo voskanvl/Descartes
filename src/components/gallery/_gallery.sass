@@ -1,0 +1,39 @@
+.gallery
+    display: flex
+    justify-content: space-between
+    user-select: none
+    height: 405px
+
+    &__main
+        border-radius: 15px
+        overflow: clip
+        border: 1px solid $darkgrey-color
+        opacity: 1
+        transition: opacity $std-time
+        flex: 0 1 60%
+        align-self: stretch
+
+        & > img
+            width: 100%
+
+        &[hide]
+            opacity: 0
+
+    &__thumbnails
+        list-style: none
+        display: flex
+        flex-direction: column
+        row-gap: ph(34)
+
+    &__thumbnail
+        width: 99px
+        aspect-ratio: 1
+        border-radius: 15px
+        overflow: clip
+        cursor: pointer
+
+        & > img
+            width: 100%
+
+        &[active]
+            border: 1px solid $darkgrey-color

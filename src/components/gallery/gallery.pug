@@ -1,0 +1,12 @@
+mixin gallery(arr)
+    .gallery 
+        .gallery__main
+            img(src= arr[0], alt="thumb") 
+        ul.gallery__thumbnails
+            each i, idx in arr
+                if idx===0
+                    li.gallery__thumbnail(active="active")
+                        img(src= i, alt="thumb")
+                else 
+                    li.gallery__thumbnail
+                        img(src= i, alt="thumb") 
