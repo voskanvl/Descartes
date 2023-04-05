@@ -8,6 +8,9 @@
 @function ph($x)
     @return calc($x / 1010 *100vh)
 
+=mq1440()
+    @media (width <= 1440px)
+        @content
 =mq1024()
     @media (width <= 1024px)
         @content
@@ -16,6 +19,9 @@
         @content
 =mq530()
     @media (width <= 530px)
+        @content
+=mq425()
+    @media (width <= 425px)
         @content
 
 =expand()

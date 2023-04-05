@@ -74,8 +74,7 @@ export default class MultyRange {
     private rangeTrack: HTMLElement = document.createElement("div");
     private inputMin: HTMLInputElement = document.createElement("input");
     private inputMax: HTMLInputElement = document.createElement("input");
-    private min: number = 0;
-    private max: number = 100;
+
     private width: number = 100;
     private _currentMin: number = 0;
     private _currentMax: number = 100;
@@ -180,9 +179,6 @@ export default class MultyRange {
         this.listeners = this.listeners.filter(e => e !== cb);
     }
 
-    get currentMin() {
-        return this._currentMin;
-    }
     private set currentMin(x: number) {
         this._currentMin = x;
         this.listeners.forEach(e => e(this._currentMin, this._currentMax));
@@ -194,9 +190,6 @@ export default class MultyRange {
     }
     public set valueMin(x: number) {
         this.currentMin = ((x - this.initMin) / this.initWidth) * 100;
-    }
-    get currentMax() {
-        return this._currentMax;
     }
     public get valueMax() {
         return this.initMin + (this.initWidth * this._currentMax) / 100;
@@ -224,3 +217,5 @@ export default class MultyRange {
         return this;
     }
 }
+
+//TODO: сделать исправление положения рендже при ручном вводе

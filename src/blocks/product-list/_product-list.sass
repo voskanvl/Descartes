@@ -1,21 +1,35 @@
+
 =row()
     display: flex
     align-items: flex-end
     justify-content: space-between
+
 .product-list
     display: block
 
     &__container
-        margin-inline: pw(40)
+        margin:0 pw(40) ph(124) 
 
     &__header 
         +row
         margin-bottom: ph(76)
+        +mq1024 
+            flex-direction: column
+            align-items: flex-start
+            row-gap: 20px
 
     &__controls
         flex: 1 0 30%
         +row
         margin-left: pw(117)
+        +mq1024 
+            width: calc(100% - pw(117))
+            // margin-left: 0
+            justify-content: space-around
+
+        +mq425 
+            flex-direction: column-reverse
+            row-gap: 16px
 
     &__control
         display: flex
@@ -27,16 +41,74 @@
         display: grid
         grid-template-columns: 25% auto
         column-gap: pw(117)
+        +mq1024 
+            grid-template-columns: 100%
 
     &__list
         display: grid
         grid-template-columns: repeat(4, 24%)
         gap: ph(31) pw(21)
+        padding-left: 0
 
+        +mq1440
+            grid-template-columns: repeat(3, 32%)
+        
+        +mq768
+            grid-template-columns: repeat(2, 49%)
+        +mq425
+            grid-template-columns: 100%
+
+        & > .price-card
+            min-height: 345px
+
+
+        & .price-card__controls
+            flex-direction: column
+            row-gap: 5px
+            height: 110px
+
+            & .button-el
+                &:first-child
+                    background: #0000 
+                    border: 1px solid $darkgrey-color
+                    // padding-inline: pw(13)
+
+                    & > .price-card__price
+                        column-gap: 10px
+
+                        & > .price-card__price-last
+                            color: rgba($darkgrey-color, 70%)
+
+        & .price-card__price-current
+            font-size: clamp(16px,20 / 768 * 100vw,20px)
     &__filter
         border: 2px solid #656565
         border-radius: 15px
         padding: ph(31) pw(34)
+        max-height: 400vh
+        max-width: 100vh
+        overflow: clip
+        box-shadow: 0 0 0 #0007
+        transition: $std-time
+
+        +mq1024 
+            // display: none
+            padding: 0
+            border: none
+            max-height: 0
+            max-width: 0
+            box-shadow: 0 1em 2em #0007
+            position: absolute
+            left: 1em
+            right: 1em
+            background: $body-color
+            z-index: 2
+
+            &[active]
+                border: 2px solid #656565
+                padding: ph(31) pw(34)
+                max-height: 400vh
+                max-width: 100vh
         
         & > *
             border-top: 2px solid #656565
@@ -50,3 +122,24 @@
 
             &:nth-last-child(2)
                 border-bottom: 2px solid #656565
+
+        &--control
+            display: none
+            +mq1024
+                display: flex
+                align-items: center
+
+    &__catalog 
+        & > .button-el
+            margin-top: ph(58)
+            max-width: 290px
+            margin-left: 11px
+            +mq768
+                max-width: calc(100% - 11px * 2)
+
+    &__sort
+        &--control
+            & > select
+                // appearance: none
+                border: none
+                background: none

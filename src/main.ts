@@ -35,3 +35,11 @@ searchElement.addEventListener("mouseleave", () => {
 });
 
 initMultiRange();
+
+const filterControl = document.querySelector<HTMLElement>(".product-list__filter--control");
+const filter = document.querySelector<HTMLElement>(".product-list__filter");
+filterControl &&
+    filterControl.addEventListener("click", () => {
+        if (innerWidth > 1024) return;
+        filter && filter.toggleAttribute("active");
+    });
