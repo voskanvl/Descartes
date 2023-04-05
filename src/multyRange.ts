@@ -141,25 +141,18 @@ export default class MultyRange {
 
         this.inputMin.addEventListener("input", (event: Event) => {
             let { value } = event.target as HTMLInputElement;
-            if (+value >= this._currentMax - this.delta) {
-                setTimeout(() => {
-                    (event.target as HTMLInputElement).value = this._currentMax - this.delta + "";
-                    this.recalcRangeTrack();
-                });
-                return;
-            }
+
+            if (this.limiterMin(value, event.target as HTMLInputElement)) return;
+
             this.currentMin = +value;
             this.recalcRangeTrack();
         });
+
         this.inputMax.addEventListener("input", (event: Event) => {
             let { value } = event.target as HTMLInputElement;
-            if (+value <= this._currentMin + this.delta) {
-                setTimeout(() => {
-                    (event.target as HTMLInputElement).value = this._currentMin + this.delta + "";
-                    this.recalcRangeTrack();
-                });
-                return;
-            }
+
+            if (this.limiterMax(value, event.target as HTMLInputElement)) return;
+
             this.currentMax = +value;
             this.recalcRangeTrack();
         });
@@ -167,9 +160,31 @@ export default class MultyRange {
         return this.container;
     }
 
+    private limiterMax(value: string | number, object: HTMLInputElement): boolean {
+        if (+value <= this._currentMin + this.delta) {
+            setTimeout(() => {
+                object.value = this._currentMin + this.delta + "";
+                this.recalcRangeTrack();
+            });
+            return true;
+        }
+        return false;
+    }
+
+    private limiterMin(value: string | number, object: HTMLInputElement): boolean {
+        if (+value >= this._currentMax - this.delta) {
+            setTimeout(() => {
+                object.value = this._currentMax - this.delta + "";
+                this.recalcRangeTrack();
+            });
+            return true;
+        }
+        return false;
+    }
+
     private recalcRangeTrack() {
         this.rangeTrack.style.left = (this._currentMin / this.width) * 100 + 2 + "%";
-        this.rangeTrack.style.width = `${this._currentMax - this.currentMin - 2}%`;
+        this.rangeTrack.style.width = `${this._currentMax - this._currentMin - 2}%`;
     }
 
     subscribe(cb: ListenerType) {
@@ -185,24 +200,40 @@ export default class MultyRange {
         this.inputMin.value = this._currentMin + "";
         this.recalcRangeTrack();
     }
+
     public get valueMin() {
         return this.initMin + (this.initWidth * this._currentMin) / 100;
     }
+
     public set valueMin(x: number) {
-        this.currentMin = ((x - this.initMin) / this.initWidth) * 100;
+        const val = ((x - this.initMin) / this.initWidth) * 100;
+        if (this.limiterMin(val, this.inputMax)) {
+            this.currentMax = this._currentMax;
+            return;
+        }
+        this.currentMin = val;
     }
+
     public get valueMax() {
         return this.initMin + (this.initWidth * this._currentMax) / 100;
     }
+
     private set currentMax(x: number) {
         this._currentMax = x;
         this.listeners.forEach(e => e(this._currentMin, this._currentMax));
         this.inputMax.value = this._currentMax + "";
         this.recalcRangeTrack();
     }
+
     public set valueMax(x: number) {
-        this.currentMax = ((x - this.initMin) / this.initWidth) * 100;
+        const val = ((x - this.initMin) / this.initWidth) * 100;
+        if (this.limiterMax(val, this.inputMax)) {
+            this.currentMax = this._currentMax;
+            return;
+        }
+        this.currentMax = val;
     }
+
     connectInputs(inputMin: HTMLInputElement | null, inputMax: HTMLInputElement | null) {
         const initMin = (inputMin && +inputMin.value) || 0;
         const initMax = (inputMax && +inputMax.value) || 100;
