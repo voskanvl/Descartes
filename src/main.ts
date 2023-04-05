@@ -47,11 +47,11 @@ filterControl &&
     });
 
 gallery();
-scrollCharact(
-    document.querySelector<HTMLElement>(".good-main-desctop-up__charact-all"),
-    document.querySelector<HTMLElement>(".good-main-desctop-up__charact-list"),
-);
-scrollCharact(
-    document.querySelector<HTMLElement>(".good-main-desctop-down__charact-all"),
-    document.querySelector<HTMLElement>(".good-main-desctop-down__description-body"),
-);
+// scrollCharact(
+//     document.querySelector<HTMLElement>(".good-main-desctop-up__charact-all"),
+//     document.querySelector<HTMLElement>(".good-main-desctop-up__charact-list"),
+// );
+// scrollCharact(
+//     document.querySelector<HTMLElement>(".good-main-desctop-down__charact-all"),
+//     document.querySelector<HTMLElement>(".good-main-desctop-down__description-body"),
+// );

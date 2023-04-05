@@ -1,6 +1,6 @@
 .accordion
-    position: relative 
-    
+    position: relative
+
     &__header
         display: flex
         column-gap: 11px
@@ -10,19 +10,20 @@
         rotate: 0
         transition: transform $std-time
 
-
     input[type="checkbox"]
         position: absolute
-        top: 0
+        // top: 0
         left: 0
         height: 3em
         width: 100%
         opacity: 0
+        cursor: pointer
+        z-index: 2
 
         &:checked
             & ~ .accordion__body
                 max-height: 0
-            & ~ .accordion__header > img 
+            & ~ .accordion__header > img
                 rotate: 180deg
 
     &__body
