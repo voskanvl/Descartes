@@ -201,6 +201,13 @@ export default class MultyRange {
         this.recalcRangeTrack();
     }
 
+    private set currentMax(x: number) {
+        this._currentMax = x;
+        this.listeners.forEach(e => e(this._currentMin, this._currentMax));
+        this.inputMax.value = this._currentMax + "";
+        this.recalcRangeTrack();
+    }
+
     public get valueMin() {
         return this.initMin + (this.initWidth * this._currentMin) / 100;
     }
@@ -216,13 +223,6 @@ export default class MultyRange {
 
     public get valueMax() {
         return this.initMin + (this.initWidth * this._currentMax) / 100;
-    }
-
-    private set currentMax(x: number) {
-        this._currentMax = x;
-        this.listeners.forEach(e => e(this._currentMin, this._currentMax));
-        this.inputMax.value = this._currentMax + "";
-        this.recalcRangeTrack();
     }
 
     public set valueMax(x: number) {
@@ -248,5 +248,3 @@ export default class MultyRange {
         return this;
     }
 }
-
-//TODO: сделать исправление положения рендже при ручном вводе
