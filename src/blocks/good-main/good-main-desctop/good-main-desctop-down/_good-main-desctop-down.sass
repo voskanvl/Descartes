@@ -8,9 +8,14 @@
         column-gap: pw(640)
 
     &__right
-        & > *
+        & > .accordion
             padding: 24px 0 20px
             border-bottom: 1px solid #000
+
+            & > input:checked
+                & + .accordion__header
+                    margin-bottom: 0
+
         & > *:first-child
             padding-top: 0
 

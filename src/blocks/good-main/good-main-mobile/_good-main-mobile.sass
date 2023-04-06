@@ -1,5 +1,8 @@
 .good-main-mobile
     font-size: 15px
+    display: none
+    +mq1024
+        display: block
 
     &__container
         background: #fff
@@ -89,6 +92,9 @@
         & > *
             border-top: 1px solid $darkgrey-color
             padding-block: phm(21)
+
+            &:last-child
+                border-bottom: 1px solid $darkgrey-color
 
             &  p + p
                 margin-top: 1em

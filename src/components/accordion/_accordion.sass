@@ -5,6 +5,7 @@
         display: flex
         column-gap: 11px
         margin-bottom: 16px
+        transition: margin-bottom $std-time
 
     img
         rotate: 0
@@ -23,8 +24,11 @@
         &:checked
             & ~ .accordion__body
                 max-height: 0
-            & ~ .accordion__header > img
-                rotate: 180deg
+            & + .accordion__header
+                margin-bottom: 0px
+
+                & > img
+                    rotate: 180deg
 
     &__body
         max-height: 100vh
