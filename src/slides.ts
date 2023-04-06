@@ -139,6 +139,25 @@ export default function slides() {
             )!,
         },
     };
+    const good: OptionSlide = {
+        elementName: "#good",
+        elementElement: document.querySelector<HTMLElement>("#good")!,
+        options: {
+            type: "loop",
+            arrows: false,
+            perPage: 1,
+            perMove: 1,
+            pagination: false,
+        },
+        controls: {
+            left: document.querySelector<HTMLElement>(
+                ".slider-controls__button--left.good-main-mobile__arrow",
+            )!,
+            right: document.querySelector<HTMLElement>(
+                ".slider-controls__button--right.good-main-mobile__arrow",
+            )!,
+        },
+    };
 
     return new SlideClass({
         catalog,
@@ -147,5 +166,6 @@ export default function slides() {
         news,
         newsSmall,
         popular,
+        good,
     });
 }

@@ -1,2 +1,113 @@
 .good-main-mobile
-    display: block
+    font-size: 15px
+
+    &__container
+        background: #fff
+        border-radius: 15px
+        margin: 0 10px ph(75)
+        padding: 21px 13px
+
+        & > .good-main-desctop-up__left-block
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            column-gap: calc(24 / 390 * 100vw)
+
+            & > *
+                grid-template-columns: 100%
+                row-gap: 8px
+
+    &__title
+        & > h2
+            font-size: 15px
+            font-weight: 500
+            color: $darkgrey-color
+
+        & > small
+            font-weight: 400
+            font-size: 12px
+            line-height: 15px
+            color: #4B4B4B
+            opacity: 0.7
+
+    &__gallery
+        border: 2px solid $darkgrey-color
+        border-radius: 15px
+        margin-block: phm(22)
+        overflow: hidden
+        position: relative
+
+        & .splide__slide
+            display: flex
+            justify-content: center
+
+            & img
+                width: 100%
+                object-fit: contain
+
+        & > .slider-controls
+            justify-content: center
+            position: absolute
+            // width: 100%
+            left: 50%
+            translate: -50% 0
+            bottom: 10px
+
+    &__arrow
+        background-color: $body-color
+
+    &__underline
+        text-decoration: underline
+
+    &__controls
+        display: flex
+        margin-top: phm(26)
+        column-gap: 10px
+
+        & > *
+            flex: 1
+            color: $darkgrey-color
+
+            &:first-child
+                border: 1px solid $darkgrey-color
+
+    &__price
+        display: flex
+        column-gap: 1em
+        align-items: center
+        justify-content: center
+        flex-wrap: wrap
+
+        & > strike
+            font-weight: 500
+            font-size: 14px
+            opacity: .7
+
+    &__accordion
+        margin-top: phm(31)
+
+        & > *
+            border-top: 1px solid $darkgrey-color
+            padding-block: phm(21)
+
+            &  p + p
+                margin-top: 1em
+
+            & > input:not(:checked)
+                & + .accordion__header
+                    margin-bottom: 16px
+
+            &  > .accordion__header
+                margin-bottom: 0
+                transition: margin $std-time
+
+    &__list
+        list-style: none
+        padding-left: 0
+
+    &__list-item
+        margin-top: 1em
+        display: flex
+        align-items: center
+        justify-content: space-between
+        border-bottom: 1px dashed $darkgrey-color

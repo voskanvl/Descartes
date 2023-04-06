@@ -1,0 +1,61 @@
+include ../../../pug/splides.pug
+include ../../../components/accordion/accordion.pug
+include ../../../components/button-el/button-el.pug
+include ../../../components/slider-controls/slider-controls.pug
+
+.good-main-desctop-down
+.good-main-mobile
+    .good-main-mobile__container
+        .good-main-mobile__title
+            h2 Доска террасная древесно-полимерная композитная Ecodeck (Экодек), 165*23,5
+            small Код товара: DR4000B
+
+        .good-main-mobile__gallery
+            +splide("good",goodCharacts.gallery)
+                .good-main-mobile__image 
+                    img(src= val, alt="image")
+            +sliderControls(class="good-main-mobile__arrow")
+
+        .good-main-mobile__underline В наличии
+        .good-main-desctop-up__left-block
+            .good-main-desctop-up__colors 
+                span Цвет:
+                ul.good-main-desctop-up__thumbs 
+                    each i in goodCharacts.colors
+                        li.good-main-desctop-up__thumb-item  
+                            input(type="radio" name="color")
+                            .good-main-desctop-up__thumb(style=`background: ${i};`)
+
+            .good-main-desctop-up__lengths 
+                span Длина ДПК доски, м:
+                ul.good-main-desctop-up__thumbs 
+                    each i, idx in [4,6]                                
+                        li.good-main-desctop-up__thumb-item 
+                            if idx === 0
+                                input(type="radio" name="length" checked)
+                            else
+                                input(type="radio" name="length")
+                            .good-main-desctop-up__length= i
+
+        .good-main-mobile__controls  
+            +buttonEl("transparent")
+                .good-main-mobile__price
+                    strike 900 руб./шт 
+                    span 777 руб./шт           
+            +buttonEl("gray") Заказать
+
+        .good-main-mobile__accordion 
+            +accordion("Описание")
+                p Уникальный профиль террасной доски из ДПК, разработанный компанией Гардек, обладает целым рядом качеств и выгодно отличает ее от зарубежных и отечественных производителей, при этом цена покрытия в собранном виде: с лагами, крепежами и доборными элементами гораздо ниже любой доски представленной в России, на сегодняшний день.
+                p Если сравнить с термически обработанной лиственницей, то наша доска стоит намного дешевле. И при этом, в отличие от лиственницы, нет абсолютно никаких дополнительных трат на покраску и покрытие антисептиком. Deckron практически не требует ухода, для чистоты ее достаточно мыть обычной водой. При этом, сроки эксплуатации ДПК достаточно велики, они составляют не менее 10 лет.
+            +accordion("Характеристики")
+                ul.good-main-mobile__list
+                    each i in Object.entries(goodCharacts.characts)
+                        li.good-main-mobile__list-item 
+                            span #{i[0]}:
+                            span= i[1]
+            +accordion("Гарантия", false)
+                p Срок гарантии зависит от категории товара. Убедительно просим вас внимательно ознакомиться с условиями гарантийных обязательств, а также правильно заполнять гарантийный талон. Гарантия действует, только если указаны модель, серийный номер, дата продажи, а также присутствуют четкая печать фирмы-продавца и подпись покупателя.
+            +accordion("Доставка и оплата")
+                p Срок гарантии зависит от категории товара. Убедительно просим вас внимательно ознакомиться с условиями гарантийных обязательств, а также правильно заполнять гарантийный талон. Гарантия действует, только если указаны модель, серийный номер, дата продажи, а также присутствуют четкая печать фирмы-продавца и подпись покупателя.
+
