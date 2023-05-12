@@ -1,12 +1,12 @@
 type OptionsType = Partial<{
-    containerClass: string;
-    rangeRails: string;
-    rangeTrack: string;
-    inputMin: string;
-    inputMax: string;
-}>;
+    containerClass: string
+    rangeRails: string
+    rangeTrack: string
+    inputMin: string
+    inputMax: string
+}>
 
-type ListenerType = (min: number, max: number) => void;
+type ListenerType = (min: number, max: number) => void
 
 const InitialOptions: Required<OptionsType> = {
     containerClass: "container",
@@ -14,7 +14,7 @@ const InitialOptions: Required<OptionsType> = {
     rangeTrack: "range-track",
     inputMin: "range--min",
     inputMax: "range--max",
-};
+}
 
 const style = (opt: OptionsType) => `
         .${opt.containerClass} {
@@ -65,186 +65,186 @@ const style = (opt: OptionsType) => `
             height: 1px;
             background: #656565;
           }        
-        `;
+        `
 export default class MultyRange {
-    private root;
-    private options: OptionsType = InitialOptions;
-    private container: HTMLElement = document.createElement("div");
-    private rangeRails: HTMLElement = document.createElement("div");
-    private rangeTrack: HTMLElement = document.createElement("div");
-    private inputMin: HTMLInputElement = document.createElement("input");
-    private inputMax: HTMLInputElement = document.createElement("input");
+    private root
+    private options: OptionsType = InitialOptions
+    private container: HTMLElement = document.createElement("div")
+    private rangeRails: HTMLElement = document.createElement("div")
+    private rangeTrack: HTMLElement = document.createElement("div")
+    private inputMin: HTMLInputElement = document.createElement("input")
+    private inputMax: HTMLInputElement = document.createElement("input")
 
-    private width: number = 100;
-    private _currentMin: number = 0;
-    private _currentMax: number = 100;
-    private listeners: ListenerType[] = [];
-    private delta = 5;
+    private width: number = 100
+    private _currentMin: number = 0
+    private _currentMax: number = 100
+    private listeners: ListenerType[] = []
+    private delta = 5
 
-    private initMin = 0;
-    private initMax = 100;
-    private initWidth = 100;
+    initMin = 0
+    initMax = 100
+    initWidth = 100
 
     constructor(
         root: HTMLElement,
         options: OptionsType = InitialOptions,
         applyDefaultStyle = true,
     ) {
-        this.root = root;
-        this.options = { ...InitialOptions, ...options };
-        this.root.innerHTML = "";
-        const styleEl = document.createElement("style");
-        styleEl.append(style(this.options));
-        if (applyDefaultStyle) this.root.append(styleEl);
-        this.root.append(this.createBasicSchema());
+        this.root = root
+        this.options = { ...InitialOptions, ...options }
+        this.root.innerHTML = ""
+        const styleEl = document.createElement("style")
+        styleEl.append(style(this.options))
+        if (applyDefaultStyle) this.root.append(styleEl)
+        this.root.append(this.createBasicSchema())
     }
 
     private createDiv(className: string, optionName: keyof OptionsType): HTMLDivElement {
-        const el = document.createElement("div");
-        el.classList.add((this.options && this.options[optionName]) || className);
-        return el;
+        const el = document.createElement("div")
+        el.classList.add((this.options && this.options[optionName]) || className)
+        return el
     }
     private createInput(className: string, optionName: keyof OptionsType): HTMLInputElement {
-        const el = document.createElement("input");
-        el.classList.add("range");
-        el.classList.add((this.options && this.options[optionName]) || className);
-        el.type = "range";
-        el.max = "100";
-        el.min = "0";
-        return el;
+        const el = document.createElement("input")
+        el.classList.add("range")
+        el.classList.add((this.options && this.options[optionName]) || className)
+        el.type = "range"
+        el.max = "100"
+        el.min = "0"
+        return el
     }
     private createBasicSchema(): HTMLElement {
         this.container = this.createDiv(
             this.options.containerClass || InitialOptions.containerClass,
             "containerClass",
-        );
+        )
         this.rangeRails = this.createDiv(
             this.options.rangeRails || InitialOptions.rangeRails,
             "rangeRails",
-        );
+        )
         this.rangeTrack = this.createDiv(
             this.options.rangeTrack || InitialOptions.rangeTrack,
             "rangeTrack",
-        );
+        )
         this.inputMin = this.createInput(
             this.options.inputMin || InitialOptions.inputMin,
             "inputMin",
-        );
+        )
         this.inputMax = this.createInput(
             this.options.inputMax || InitialOptions.inputMax,
             "inputMax",
-        );
+        )
 
-        this.inputMin.value = "0";
-        this.inputMax.value = "100";
-        this.container.append(this.rangeRails, this.rangeTrack, this.inputMin, this.inputMax);
+        this.inputMin.value = "0"
+        this.inputMax.value = "100"
+        this.container.append(this.rangeRails, this.rangeTrack, this.inputMin, this.inputMax)
 
         this.inputMin.addEventListener("input", (event: Event) => {
-            let { value } = event.target as HTMLInputElement;
+            let { value } = event.target as HTMLInputElement
 
-            if (this.limiterMin(value, event.target as HTMLInputElement)) return;
+            if (this.limiterMin(value, event.target as HTMLInputElement)) return
 
-            this.currentMin = +value;
-            this.recalcRangeTrack();
-        });
+            this.currentMin = +value
+            this.recalcRangeTrack()
+        })
 
         this.inputMax.addEventListener("input", (event: Event) => {
-            let { value } = event.target as HTMLInputElement;
+            let { value } = event.target as HTMLInputElement
 
-            if (this.limiterMax(value, event.target as HTMLInputElement)) return;
+            if (this.limiterMax(value, event.target as HTMLInputElement)) return
 
-            this.currentMax = +value;
-            this.recalcRangeTrack();
-        });
+            this.currentMax = +value
+            this.recalcRangeTrack()
+        })
 
-        return this.container;
+        return this.container
     }
 
     private limiterMax(value: string | number, object: HTMLInputElement): boolean {
         if (+value <= this._currentMin + this.delta) {
             setTimeout(() => {
-                object.value = this._currentMin + this.delta + "";
-                this.recalcRangeTrack();
-            });
-            return true;
+                object.value = this._currentMin + this.delta + ""
+                this.recalcRangeTrack()
+            })
+            return true
         }
-        return false;
+        return false
     }
 
     private limiterMin(value: string | number, object: HTMLInputElement): boolean {
         if (+value >= this._currentMax - this.delta) {
             setTimeout(() => {
-                object.value = this._currentMax - this.delta + "";
-                this.recalcRangeTrack();
-            });
-            return true;
+                object.value = this._currentMax - this.delta + ""
+                this.recalcRangeTrack()
+            })
+            return true
         }
-        return false;
+        return false
     }
 
     private recalcRangeTrack() {
-        this.rangeTrack.style.left = (this._currentMin / this.width) * 100 + 2 + "%";
-        this.rangeTrack.style.width = `${this._currentMax - this._currentMin - 2}%`;
+        this.rangeTrack.style.left = (this._currentMin / this.width) * 100 + 2 + "%"
+        this.rangeTrack.style.width = `${this._currentMax - this._currentMin - 2}%`
     }
 
     subscribe(cb: ListenerType) {
-        this.listeners.push(cb);
+        this.listeners.push(cb)
     }
     unsubscribe(cb: ListenerType) {
-        this.listeners = this.listeners.filter(e => e !== cb);
+        this.listeners = this.listeners.filter(e => e !== cb)
     }
 
     private set currentMin(x: number) {
-        this._currentMin = x;
-        this.listeners.forEach(e => e(this._currentMin, this._currentMax));
-        this.inputMin.value = this._currentMin + "";
-        this.recalcRangeTrack();
+        this._currentMin = x
+        this.listeners.forEach(e => e(this._currentMin, this._currentMax))
+        this.inputMin.value = this._currentMin + ""
+        this.recalcRangeTrack()
     }
 
     private set currentMax(x: number) {
-        this._currentMax = x;
-        this.listeners.forEach(e => e(this._currentMin, this._currentMax));
-        this.inputMax.value = this._currentMax + "";
-        this.recalcRangeTrack();
+        this._currentMax = x
+        this.listeners.forEach(e => e(this._currentMin, this._currentMax))
+        this.inputMax.value = this._currentMax + ""
+        this.recalcRangeTrack()
     }
 
     public get valueMin() {
-        return this.initMin + (this.initWidth * this._currentMin) / 100;
+        return this.initMin + (this.initWidth * this._currentMin) / 100
     }
 
     public set valueMin(x: number) {
-        const val = ((x - this.initMin) / this.initWidth) * 100;
+        const val = ((x - this.initMin) / this.initWidth) * 100
         if (this.limiterMin(val, this.inputMax)) {
-            this.currentMax = this._currentMax;
-            return;
+            this.currentMax = this._currentMax
+            return
         }
-        this.currentMin = val;
+        this.currentMin = val
     }
 
     public get valueMax() {
-        return this.initMin + (this.initWidth * this._currentMax) / 100;
+        return this.initMin + (this.initWidth * this._currentMax) / 100
     }
 
     public set valueMax(x: number) {
-        const val = ((x - this.initMin) / this.initWidth) * 100;
+        const val = ((x - this.initMin) / this.initWidth) * 100
         if (this.limiterMax(val, this.inputMax)) {
-            this.currentMax = this._currentMax;
-            return;
+            this.currentMax = this._currentMax
+            return
         }
-        this.currentMax = val;
+        this.currentMax = val
     }
 
     connectInputs(inputMin: HTMLInputElement | null, inputMax: HTMLInputElement | null) {
-        const initMin = (inputMin && +inputMin.value) || 0;
-        const initMax = (inputMax && +inputMax.value) || 100;
-        const width = initMax - initMin;
-        this.initMin = initMin;
-        this.initMax = initMax;
-        this.initWidth = width;
+        const initialMin = (inputMin && +inputMin.value) || 0
+        const initialMax = (inputMax && +inputMax.value) || 100
+        const width = initialMax - initialMin
+        this.initMin = initialMin
+        this.initMax = initialMax
+        this.initWidth = width
         this.subscribe((min, max) => {
-            inputMin && (inputMin.value = String((initMin + (min / 100) * width) | 0));
-            inputMax && (inputMax.value = String((initMin + (max / 100) * width) | 0));
-        });
-        return this;
+            inputMin && (inputMin.value = String((initialMin + (min / 100) * width) | 0))
+            inputMax && (inputMax.value = String((initialMin + (max / 100) * width) | 0))
+        })
+        return this
     }
 }

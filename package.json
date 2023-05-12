@@ -9,7 +9,7 @@
         "preview": "vite preview",
         "create component": " bash ./create-component.bash",
         "create block": " bash ./create-block.bash",
-        "tar": "tar -czvf dist.tar.gz ./dist"
+        "tar": "tar -czvf descartes.tar.gz ./dist"
     },
     "devDependencies": {
         "@types/node": "^18.11.18",
