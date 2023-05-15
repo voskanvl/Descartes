@@ -81,9 +81,15 @@ export default class MultyRange {
     private listeners: ListenerType[] = []
     private delta = 5
 
+<<<<<<< Updated upstream
     initMin = 0
     initMax = 100
     initWidth = 100
+=======
+    private initMin = 0;
+    private initMax = 100;
+    private initWidth = this.initMax - this.initMin;
+>>>>>>> Stashed changes
 
     constructor(
         root: HTMLElement,

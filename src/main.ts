@@ -4,9 +4,16 @@ import "@splidejs/splide/css"
 import switchSubmenu from "./components/main-menu/main-menu"
 import slides from "./slides"
 
+<<<<<<< Updated upstream
 import initMultiRange from "./initMultiRange"
 import gallery from "./ts/gallery"
 // import scrollCharact from "./ts/scrollCharact";
+=======
+import initMultiRange from "./initMultiRange";
+import gallery from "./ts/gallery";
+
+import IMask from "imask";
+>>>>>>> Stashed changes
 
 switchSubmenu()
 const slidesInstance = slides()
@@ -46,6 +53,7 @@ filterControl &&
         filter && filter.toggleAttribute("active")
     })
 
+<<<<<<< Updated upstream
 gallery()
 // scrollCharact(
 //     document.querySelector<HTMLElement>(".good-main-desctop-up__charact-all"),
@@ -55,3 +63,14 @@ gallery()
 //     document.querySelector<HTMLElement>(".good-main-desctop-down__charact-all"),
 //     document.querySelector<HTMLElement>(".good-main-desctop-down__description-body"),
 // );
+=======
+gallery();
+
+const phoneInput = document.querySelector<HTMLInputElement>("input[type='tel']");
+
+phoneInput &&
+    IMask(phoneInput, {
+        mask: "+{7}(000)000-00-00",
+        lazy: false,
+    });
+>>>>>>> Stashed changes
