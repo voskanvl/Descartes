@@ -11,6 +11,7 @@
     white-space: nowrap
     cursor: pointer
     user-select: none
+    transitioin: background-color $std-time, color $std-time
 
     &--white
         background: #fff
@@ -35,3 +36,7 @@
         background: transparent
         border: 2px solid #656565
         color: #656565
+
+    &[disabled="true"]
+        background: #fff7
+        color: #fff

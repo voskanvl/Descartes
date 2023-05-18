@@ -17,5 +17,9 @@
             input(type="text" name="name" placeholder="Ваше имя")
             input(type="tel" name="phone" placeholder="Номер телефона")
             textarea(name="request" cols="30" rows="10" placeholder="Ваш запрос")
+            .feedback__agree 
+                input.feedback__agree-check(type="checkbox" name="")
+                .feedback__agree-caption Даю согласие на обработку моих персональных данный в соответствии с политикой обработки персональных данных
+            .feedback__error
             +buttonEl("white")
                 | Отправить 

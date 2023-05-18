@@ -11,6 +11,7 @@ import gallery from "./ts/gallery"
 import IMask from "imask"
 import modal from "./ts/modal/modal"
 import feedback from "./ts/modal/feedback"
+import { ZodError, z } from "zod"
 
 switchSubmenu()
 const slidesInstance = slides()
@@ -54,7 +55,8 @@ gallery()
 
 const phoneInput = document.querySelector<HTMLInputElement>("input[type='tel']")
 
-phoneInput &&
+const maskedPhone =
+    phoneInput &&
     IMask(phoneInput, {
         mask: "+{7}(000)000-00-00",
         lazy: false,
@@ -88,3 +90,68 @@ orderButton &&
             }),
         ).mount()
     })
+
+//--- in Page Form ---
+const schema = z.object({
+    name: z.literal(true, { errorMap: () => ({ message: "Вы забыли указать имя" }) }),
+    phone: z.string().min(11, { message: "Номер должен содержать не менее 10 символов" }),
+})
+
+const formOnPage = document.querySelector<HTMLFormElement>(".feedback-form__form")
+const nameEl = formOnPage?.querySelector<HTMLInputElement>("input[name='name']")
+// const phoneEl = formOnPage?.querySelector<HTMLInputElement>("input[name='phone']")
+const submitEl = formOnPage?.querySelector<HTMLTextAreaElement>(".button-el")
+const errorEl = formOnPage?.querySelector<HTMLElement>(".feedback__error")
+const agreeEl = formOnPage?.querySelector<HTMLInputElement>(".feedback__agree-check")
+
+submitEl && agreeEl && submitEl.setAttribute("disabled", agreeEl.checked + "")
+
+agreeEl &&
+    agreeEl.addEventListener("click", () => {
+        console.log(agreeEl.value)
+        submitEl && submitEl.setAttribute("disabled", agreeEl.checked + "")
+    })
+
+submitEl &&
+    submitEl.addEventListener("click", async () => {
+        if (!formOnPage) return
+        const formData = new FormData(formOnPage)
+
+        try {
+            schema.parse({
+                name: !!nameEl?.value,
+                phone: maskedPhone?.unmaskedValue,
+            })
+
+            if (!agreeEl?.checked) {
+                throw new Error(
+                    "Без согласия на обработку персональных данных мы не можем принять запрос",
+                )
+            }
+
+            const res = await fetch("/mail.php", {
+                method: "POST",
+                body: formData,
+            })
+
+            if (res.ok) {
+                formOnPage.innerHTML = "Все четенько. Дыши носом, мы те брякнем"
+            } else {
+                // const prevHtml = formOnPage.innerHTML
+                // formOnPage.innerHTML = "Нихера! Звони своему опсосу или перезагрузись"
+                // setTimeout(() => {}, 3000)
+                throw new Error(
+                    "Ошибка отправки данных. Попробуйте отправить вторично или обновить страницу",
+                )
+            }
+        } catch (error) {
+            if ("message" in (error as { message: string }) && !(error instanceof ZodError)) {
+                errorEl && (errorEl.innerText = (error as { message: string })?.message || "")
+                return
+            }
+            const fail = error as ZodError
+            errorEl && (errorEl.innerText = fail.errors.map(e => e.message).join(", "))
+        }
+    })
+
+//---
