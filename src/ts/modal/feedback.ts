@@ -1,18 +1,32 @@
-import IMask from "imask";
-import { ZodError, z } from "zod";
+import IMask from "imask"
+import { ZodError, z } from "zod"
 
-const initialData = {
-    title: "для заказа осталось заполнить форму ниже",
+let initialData = {
+    title: "Закажите звонок и получите консультацию по нужному для вас товару",
     caption:
         "Спасибо, данные вашего заказа будут переданы в отдел продаж. После чего ожидайте звонка!",
-};
+    textarea: { text: "Чем мы можем вам помочь?", cols: 30, rows: 8 },
+    agreeCaption:
+        "Даю согласие на обработку моих персональных данный в соответствии с политикой обработки персональных данных",
+    submit: "Записаться",
+    timeoutBeforeClose: 3000,
+    success: `
+                <p>Ваши данные были успешно отправлены.</p>
+                <p>Сидите, суки, и ждите звонка ... в дверь</p>
+                `,
+    unsuccess: `
+                <p>Ваши данные не были отправлены.</p>
+                <p>Сидите, суки, мы сами к вам приедем ...</p>
+                `,
+    insteadOfTextarea: "",
+}
 
 function createElement(className: string, text: string, type: string = "div") {
-    const element = document.createElement(type);
-    element.classList.add(className);
-    element.innerText = text;
+    const element = document.createElement(type)
+    element.classList.add(className)
+    element.innerText = text
 
-    return element;
+    return element
 }
 
 function createInput(
@@ -21,75 +35,111 @@ function createInput(
     className: string = "feedback__input",
     type: string = "text",
 ) {
-    const element = document.createElement("input");
-    element.classList.add(className);
-    element.name = name;
-    element.type = type;
-    element.placeholder = placeholder;
+    const element = document.createElement("input")
+    element.classList.add(className)
+    element.name = name
+    element.type = type
+    element.placeholder = placeholder
 
-    return element;
+    return element
 }
 
 export default function feedback({
     title,
     caption,
-}: typeof initialData = initialData): HTMLElement {
-    const element = document.createElement("form");
-    element.classList.add("feedback__body");
+    insteadOfTextarea,
+}: Partial<typeof initialData> = initialData): HTMLElement {
+    initialData = {
+        ...initialData,
+        title: title || initialData.title,
+        caption: caption || initialData.caption,
+        insteadOfTextarea: insteadOfTextarea || initialData.insteadOfTextarea,
+    }
 
-    const titleEl = createElement("feedback__title", title),
-        captionEl = createElement("feedback__caption", caption);
+    const element = document.createElement("form")
+    element.classList.add("feedback__body")
 
-    element.append(titleEl);
-    element.append(captionEl);
+    const titleEl = createElement("feedback__title", initialData.title),
+        captionEl = createElement("feedback__caption", initialData.caption)
+
+    element.append(titleEl)
+    element.append(captionEl)
 
     const name = createInput("Имя", "name"),
         email = createInput("E-mail", "email"),
-        phone = createInput("", "phone");
+        phone = createInput("", "phone")
 
-    IMask(phone, { mask: "+{7}(000)000-00-00", lazy: false });
+    IMask(phone, { mask: "+{7}(000)000-00-00", lazy: false })
 
-    const textarea = document.createElement("textarea");
-    textarea.placeholder = "Чем мы можем вам помочь?";
-    textarea.classList.add("feedback__input");
-    textarea.cols = 30;
-    textarea.rows = 10;
+    //--- TEXTAREA ---
+
+    let textarea: HTMLTextAreaElement | HTMLHeadingElement = document.createElement("textarea")
+    if (!insteadOfTextarea) {
+        textarea.placeholder = initialData.textarea.text
+        textarea.classList.add("feedback__input")
+        textarea.cols = initialData.textarea.cols
+        textarea.rows = initialData.textarea.rows
+    } else {
+        textarea = document.createElement("h3")
+        textarea.innerHTML = initialData.insteadOfTextarea || ""
+    }
+
+    //---
 
     const agree = createElement("feedback__agree", ""),
         check = createInput("", "agree", "feedback__agree-check", "checkbox"),
-        agreeCaption = createElement(
-            "feedback__agree-caption",
-            "Даю согласие на обработку моих персональных данный в соответствии с политикой обработки персональных данных",
-        );
+        agreeCaption = createElement("feedback__agree-caption", initialData.agreeCaption)
 
-    agree.append(check, agreeCaption);
+    agree.append(check, agreeCaption)
 
-    const submitEl = createInput("", "submit", "feedback__submit", "submit");
-    submitEl.value = "Записаться";
-    submitEl.disabled = true;
+    const submitEl = createInput("", "submit", "feedback__submit", "submit")
+    submitEl.value = initialData.submit
+    submitEl.disabled = true
 
-    element.append(name, email, phone, textarea, agree, submitEl);
+    const errorElement = createElement("feedback__error", "")
+
+    element.append(name, email, phone, textarea, agree, errorElement, submitEl)
 
     check.addEventListener("click", () => {
-        submitEl.disabled = !check.checked;
-    });
+        submitEl.disabled = !check.checked
+    })
 
-    submitEl.addEventListener("click", (event: Event) => {
-        event.preventDefault();
-        const schema = z.string().email({ message: "Invalid email address" });
+    const schema = z.object({
+        name: z.literal(true, { errorMap: () => ({ message: "Вы забыли указать имя" }) }),
+        email: z.string().email("введите корректный email"),
+    })
+
+    submitEl.addEventListener("click", async (event: Event) => {
+        event.preventDefault()
 
         try {
-            schema.parse(email.value);
+            schema.parse({
+                name: !!name.value,
+                email: email.value,
+            })
+
+            const res = await fetch("/mail.php", {
+                method: "POST",
+                body: new FormData(element),
+            })
+
+            if (res.ok) {
+                element.innerHTML = initialData.success
+                setTimeout(() => {
+                    element.dispatchEvent(new CustomEvent("close"))
+                }, initialData.timeoutBeforeClose)
+            } else {
+                element.innerHTML = initialData.unsuccess
+                setTimeout(() => {
+                    element.dispatchEvent(new CustomEvent("close"))
+                }, initialData.timeoutBeforeClose)
+            }
         } catch (error) {
-            const fail = error as ZodError;
-            console.log(fail);
+            const fail = error as ZodError
+            console.log(fail)
+            errorElement.innerText = fail.errors.map(e => e.message).join(", ")
         }
+    })
 
-        fetch("/mail.php", {
-            method: "POST",
-            body: new FormData(element),
-        });
-    });
-
-    return element;
+    return element
 }

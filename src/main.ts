@@ -4,16 +4,13 @@ import "@splidejs/splide/css"
 import switchSubmenu from "./components/main-menu/main-menu"
 import slides from "./slides"
 
-<<<<<<< Updated upstream
 import initMultiRange from "./initMultiRange"
 import gallery from "./ts/gallery"
 // import scrollCharact from "./ts/scrollCharact";
-=======
-import initMultiRange from "./initMultiRange";
-import gallery from "./ts/gallery";
 
-import IMask from "imask";
->>>>>>> Stashed changes
+import IMask from "imask"
+import modal from "./ts/modal/modal"
+import feedback from "./ts/modal/feedback"
 
 switchSubmenu()
 const slidesInstance = slides()
@@ -53,24 +50,41 @@ filterControl &&
         filter && filter.toggleAttribute("active")
     })
 
-<<<<<<< Updated upstream
 gallery()
-// scrollCharact(
-//     document.querySelector<HTMLElement>(".good-main-desctop-up__charact-all"),
-//     document.querySelector<HTMLElement>(".good-main-desctop-up__charact-list"),
-// );
-// scrollCharact(
-//     document.querySelector<HTMLElement>(".good-main-desctop-down__charact-all"),
-//     document.querySelector<HTMLElement>(".good-main-desctop-down__description-body"),
-// );
-=======
-gallery();
 
-const phoneInput = document.querySelector<HTMLInputElement>("input[type='tel']");
+const phoneInput = document.querySelector<HTMLInputElement>("input[type='tel']")
 
 phoneInput &&
     IMask(phoneInput, {
         mask: "+{7}(000)000-00-00",
         lazy: false,
-    });
->>>>>>> Stashed changes
+    })
+
+//--- MODAL ---
+const headerButton = document.querySelector<HTMLElement>(".header__right .button-el  ")
+const footerButton = document.querySelector<HTMLElement>(
+    ".footer .button-el.button-el--transparent",
+)
+const orderButton = document.querySelector<HTMLElement>(".good-main .button-el.button-el--gray")
+
+const modalTriggers: HTMLElement[] = []
+
+headerButton && modalTriggers.push(headerButton)
+footerButton && modalTriggers.push(footerButton)
+
+modalTriggers.forEach(e =>
+    e.addEventListener("click", () => {
+        modal(feedback()).mount()
+    }),
+)
+
+orderButton &&
+    orderButton.addEventListener("click", () => {
+        const productName = document.querySelector<HTMLElement>(".good-main-desctop-up__title")
+        modal(
+            feedback({
+                title: "ОФОРМЛЕНИЕ ЗАКАЗА",
+                insteadOfTextarea: productName?.innerHTML,
+            }),
+        ).mount()
+    })

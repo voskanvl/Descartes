@@ -1,0 +1,91 @@
+.modal
+    --index: calc(1vw + 1vh)
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background: #0002
+    backdrop-filter: blur(6px)
+    display: grid
+    place-items: center
+    z-index: 2
+    overflow-y: auto
+
+    &__close
+        background: url("../../assets/svg/x-square.svg") no-repeat
+        width: 46px
+        height: 46px
+        position: absolute
+        top: -40px
+        right: -40px
+        cursor: pointer
+
+.feedback
+
+    &__body
+        --dark: #242424
+        margin-top: 46px
+        position: relative
+        background: #fff
+        border-radius: 10px
+        width: min(494px, 100vw - 92px)
+        height: max-content
+        color: #303031
+        padding: ph(49) pw(39) ph(56)
+
+    &__title
+        font-weight: 700
+        font-size: max(14px, 0.8 * var(--index))
+        text-transform: uppercase
+        margin-bottom: ph(17)
+        text-align: center
+
+    &__caption
+        font-weight: 350
+        font-size: clamp(14px,18 * 1024 * 100vw,18px)
+        margin-bottom: ph(30)
+
+    &__input
+        display: block
+        width: 100%
+        background: rgba(255, 255, 255, 0.1)
+        border: 1px solid var(--dark)
+        box-shadow: inset 0px 0px 68px rgba(255, 255, 255, 0.05)
+        backdrop-filter: blur(24px)
+        border-radius: 7px
+        padding: 11px 36px
+        font-size: 16px
+        margin-bottom: ph(14)
+
+        &::placeholder
+            color: var(--dark)
+
+    &__agree
+        display: flex
+        align-items: flex-start
+        column-gap: pw(22)
+        margin-block: ph(9)
+
+        & > input
+            margin-top: 10px
+
+    &__agree-caption
+        font-size: 11px
+
+    &__submit
+        display: block
+        background: var(--dark)
+        color: #fff
+        border-radius: 10px
+        border: 0
+        +fz(18,1024,25)
+        padding: 10px 30px
+
+        &:disabled
+            background: #777
+            color: #bbb
+
+    &__error
+        color: #f70
+        margin-block: 1em
