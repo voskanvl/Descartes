@@ -81,7 +81,8 @@ export default function feedback({
         textarea.rows = initialData.textarea.rows
     } else {
         textarea = document.createElement("h3")
-        textarea.innerHTML = initialData.insteadOfTextarea || ""
+        textarea.innerHTML =
+            "<span style='font-weight: 300;'>ЗАКАЗ: </span>" + initialData.insteadOfTextarea
     }
 
     //---
