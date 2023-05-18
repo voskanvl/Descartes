@@ -8,12 +8,12 @@
     display: block
 
     &__container
-        margin:0 pw(40) ph(124) 
+        margin: 0 pw(40) ph(124)
 
-    &__header 
+    &__header
         +row
         margin-bottom: ph(76)
-        +mq1024 
+        +mq1024
             flex-direction: column
             align-items: flex-start
             row-gap: 20px
@@ -22,12 +22,12 @@
         flex: 1 0 30%
         +row
         margin-left: pw(117)
-        +mq1024 
+        +mq1024
             width: calc(100% - pw(117))
             // margin-left: 0
             justify-content: space-around
 
-        +mq425 
+        +mq425
             flex-direction: column-reverse
             row-gap: 16px
 
@@ -35,24 +35,23 @@
         display: flex
         align-items: center
         column-gap: 9px
-        
 
     &__body
         display: grid
         grid-template-columns: 25% auto
         column-gap: pw(117)
-        +mq1024 
+        +mq1024
             grid-template-columns: 100%
 
     &__list
         display: grid
-        grid-template-columns: repeat(4, 24%)
+        grid-template-columns: repeat(4, minmax(0, 1fr))
         gap: ph(31) pw(21)
         padding-left: 0
 
         +mq1440
             grid-template-columns: repeat(3, 32%)
-        
+
         +mq768
             grid-template-columns: repeat(2, 49%)
         +mq425
@@ -61,7 +60,6 @@
         & > .price-card
             min-height: 345px
 
-
         & .price-card__controls
             flex-direction: column
             row-gap: 5px
@@ -69,7 +67,7 @@
 
             & .button-el
                 &:first-child
-                    background: #0000 
+                    background: #0000
                     border: 1px solid $darkgrey-color
                     // padding-inline: pw(13)
 
@@ -91,7 +89,7 @@
         box-shadow: 0 0 0 #0007
         transition: $std-time
 
-        +mq1024 
+        +mq1024
             // display: none
             padding: 0
             border: none
@@ -109,7 +107,7 @@
                 padding: ph(31) pw(34)
                 max-height: 400vh
                 max-width: 100vh
-        
+
         & > *
             border-top: 2px solid #656565
             padding-top: 16px
@@ -129,7 +127,7 @@
                 display: flex
                 align-items: center
 
-    &__catalog 
+    &__catalog
         & > .button-el
             margin-top: ph(58)
             max-width: 290px

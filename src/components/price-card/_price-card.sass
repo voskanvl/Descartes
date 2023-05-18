@@ -5,25 +5,36 @@ $margin: 11px
     background: #0000
     border: 1px solid $main-color
     margin: 0 $margin
-    height: max(ph(450), 260px)
+    // height: max(ph(450), 260px)
     position: relative
+
+    display: flex
+    flex-direction: column
+    justify-content: center
 
     &__container
         margin: 20px 16px
         position: relative
-        height: calc(100% - 20px * 2)
+        // height: calc(100% - 20px * 2)
 
     img
-        position: absolute
-        top: 0
-        right: 0
-        z-index: -1
-        width: 70%
+        // position: absolute
+        // top: 0
+        // right: 0
+        // z-index: -1
+        // width: 70%
+        width: 100%
+        // aspect-ratio: 1
+        object-fit: contain
 
     &__content
-        position: absolute
+        // position: absolute
         bottom: 0
         width: 100%
+
+        p
+            text-transform: uppercase
+            +fz(11, 1024, 15)
 
     &__controls
         display: flex

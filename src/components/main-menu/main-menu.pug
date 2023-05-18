@@ -9,9 +9,12 @@
                 .main-menu__caption= i.name
 
     each i in mainMenu
-        .main-menu__submenu(data-id= i.id)
+        ul.main-menu__submenu(data-id= i.id)
             each j in i.sub 
-                p= j 
-                img(src="https://picsum.photos/400" alt="")
+                li
+                    a(href= j.href)
+                        img(src= j.img)
+                        span= j.name 
+
 
 

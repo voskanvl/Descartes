@@ -1,6 +1,6 @@
 $search-res: 1246px
 .main-menu
-    
+
     position: absolute
     z-index: 2
     top: 0
@@ -77,6 +77,7 @@ $search-res: 1246px
             padding: 0 15px
 
     &__item
+        position: relative
         display: flex
         align-items: center
         column-gap: 2.5em
@@ -87,6 +88,17 @@ $search-res: 1246px
                 text-decoration: underline
             & .main-menu__submenu
                 width: 50vw
+
+            &::after
+                content: "◂"
+                color: #303031
+                font-size: 80px
+                position: absolute
+                top: 0
+                right: 0
+                translate: 80% -25%
+                z-index: 2
+                text-shadow: 0 5px 5px #30303180
 
     &__caption
         width: 100%
@@ -105,9 +117,18 @@ $search-res: 1246px
         transition: $std-time
         width: calc(50vw - var(--width-menu))
         translate: -100vw 0
+        padding-left: 1.5em
+
+        display: grid
+        grid-template-columns: repeat(2,minmax(0, 1fr))
+        grid-auto-rows: max-content
+        column-gap: 10px
+        row-gap: ph(30)
+        place-items: start
 
         &[active]
             padding: 1em
+            padding-left: 3em
             z-index: -1
             translate: var(--width-menu) 0
 
@@ -115,6 +136,37 @@ $search-res: 1246px
             width: calc(75vw - var(--width-menu))
         @media (width <= 1200px)
             width: calc(100vw - var(--width-menu))
+
+        li
+            list-style: none
+            width: 100%
+            & > a
+                display: block
+                width: 100%
+                padding: 5px
+
+                background: tranparent
+                color: #303031
+                filter: brightness(1) grayscale(1)
+                transition: background-color $std-time, filter $std-time, color $std-time 0.3s
+                border-radius: 5px
+                cursor: pointer
+
+                display: grid
+                grid-template-columns: 50px 1fr
+                gap: ph(30)
+                place-items: center
+
+                & > img
+                    display: block
+                    width: 100%
+                    aspect-ratio: 1
+                    object-fit: contain
+
+                &:hover
+                    background: #eee
+                    color: #000
+                    filter: brightness(0.9) grayscale(0)
 
     @media (width <= 768px)
         display: none

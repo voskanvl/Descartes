@@ -73,3 +73,28 @@ $up-margin: 81px
 
         & > *
             overflow: hidden
+
+        ul
+            list-style: none
+            padding-left: 0
+
+        li
+            & > a
+                display: grid
+                grid-template-columns: 50px 1fr
+                grid-auto-rows: minmax(50px,auto)
+                color: #303031
+                background: #0000
+                transition: color $std-time, background-color $std-time
+                gap: 10px
+                place-items: center start
+                margin-block: 10px
+                border-radius: 5px
+                padding: 5px
+
+                &:hover
+                    background: #555
+                    color: #fff
+
+        img
+            width: 100%

@@ -4,35 +4,66 @@ mainMenu:
     src: "../../assets/images/main-menu/Frame 27.png"
     href: "#"
     sub:
-      - Voluptate do et mollit culpa dolor ipsum cupidatat eiusmod duis ut culpa sit adipisicing.
+      - name:  Лаги из ДПК для устойчивой основы террас
+        img: "../../assets/images/main-menu/submenu/laga-montazhnaya-alyuminievaya-20h50-mm-4-metra-228x228.jpg"
+      - name:  Уголки и крепежные элементы для надежного крепления досок
+        img: "../../assets/images/main-menu/submenu/ugolok-dpk-35h70-mm-4metra-venge-228x228.jpg"
+      - name:  Кляймеры для фиксации ступеней, перил и других деталей
+        img: "../../assets/images/main-menu/submenu/klyajmer-ryadovoj-wpc-deck-nerzhaveyuschaya-stal-zazor-4-0-5-5-mm-228x228.jpg"
+
   - id: 502
     name: Террасная доска (Декинг) из ДПК
     src: "../../assets/images/main-menu/Frame 28.png"
     href: "#"
     sub:
-      - Consequat laborum reprehenderit do quis laborum cupidatat ex adipisicing magna anim ex do.            Excepteur est in nostrud laborum exercitation qui velit officia commodo ad enim culpa nisi.
+      - name: ITP
+        img: "../../assets/images/main-menu/submenu/itp.png"          
+      - name: CM Decking
+        img: "../../assets/images/main-menu/submenu/f.png"          
+      - name: Terradesk
+        img: "../../assets/images/main-menu/submenu/f.png"   
+               
   - id: 503
     name: Угловые и торцевые элементы
     src: "../../assets/images/main-menu/Frame 29.png"
     href: "#"
     sub:
-      - Aute ipsum aliqua esse cupidatat non minim officia est pariatur pariatur aliquip.
+      - name: TWINSON
+        img: "../../assets/images/main-menu/submenu/laga-montazhnaya-alyuminievaya-20h50-mm-4-metra-228x228.jpg"
+      - name: TERRADESK
+        img: "../../assets/images/main-menu/submenu/laga-montazhnaya-alyuminievaya-20h50-mm-4-metra-228x228.jpg"
+
   - id: 504
     name: Ступени из ДПК
     src: "../../assets/images/main-menu/Frame 30.png"
     href: "#"
     sub:
-      - Reprehenderit est duis reprehenderit est excepteur nulla officia nostrud nulla in cupidatat.
+      - name: Ступень "Антрацит"
+        img: "../../assets/images/main-menu/submenu/644000959-0.webp"
+      - name: Ступень "Венге"
+        img: "../../assets/images/main-menu/submenu/81954374.webp"
+      - name: Ступень "Дуб"
+        img: "../../assets/images/main-menu/submenu/84910096.webp"
+
+
   - id: 505
     name: Опоры для лаг и плитки
     src: "../../assets/images/main-menu/Frame 31.png"
     href: "#"
     sub:
-      - Do sint consectetur laborum aute officia.
+      - name: Профессиональные
+        img: "../../assets/images/main-menu/submenu/plastikovye_reguliruemye_opory_hilst_lift.webp"
+      - name: Огнеупорные
+        img: "../../assets/images/main-menu/submenu/reguliruemaya-opora-hilst-lift-f-hl4-115-155-mm.webp"
+      - name: Негорючие
+        img: "../../assets/images/main-menu/submenu/Metallicheskie__opori.webp"
+
+
   - id: 506
     name: Средства для ухода
     src: "../../assets/images/main-menu/Frame 32.png"
     href: "#"
     sub:
-      - Lorem exercitation nostrud non culpa irure Lorem.
+      - name: Профессиональные
+        img: "../../assets/images/main-menu/submenu/R.jpg"
   
