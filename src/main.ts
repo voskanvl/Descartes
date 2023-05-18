@@ -104,12 +104,12 @@ const submitEl = formOnPage?.querySelector<HTMLTextAreaElement>(".button-el")
 const errorEl = formOnPage?.querySelector<HTMLElement>(".feedback__error")
 const agreeEl = formOnPage?.querySelector<HTMLInputElement>(".feedback__agree-check")
 
-submitEl && agreeEl && submitEl.setAttribute("disabled", agreeEl.checked + "")
+submitEl && agreeEl && submitEl.setAttribute("disabled", !agreeEl.checked + "")
 
 agreeEl &&
     agreeEl.addEventListener("click", () => {
         console.log(agreeEl.value)
-        submitEl && submitEl.setAttribute("disabled", agreeEl.checked + "")
+        submitEl && submitEl.setAttribute("disabled", !agreeEl.checked + "")
     })
 
 submitEl &&
@@ -118,16 +118,16 @@ submitEl &&
         const formData = new FormData(formOnPage)
 
         try {
-            schema.parse({
-                name: !!nameEl?.value,
-                phone: maskedPhone?.unmaskedValue,
-            })
-
             if (!agreeEl?.checked) {
                 throw new Error(
                     "Без согласия на обработку персональных данных мы не можем принять запрос",
                 )
             }
+
+            schema.parse({
+                name: !!nameEl?.value,
+                phone: maskedPhone?.unmaskedValue,
+            })
 
             const res = await fetch("/mail.php", {
                 method: "POST",
@@ -137,9 +137,6 @@ submitEl &&
             if (res.ok) {
                 formOnPage.innerHTML = "Все четенько. Дыши носом, мы те брякнем"
             } else {
-                // const prevHtml = formOnPage.innerHTML
-                // formOnPage.innerHTML = "Нихера! Звони своему опсосу или перезагрузись"
-                // setTimeout(() => {}, 3000)
                 throw new Error(
                     "Ошибка отправки данных. Попробуйте отправить вторично или обновить страницу",
                 )
