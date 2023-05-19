@@ -3,18 +3,18 @@
     .main-menu__head 
         //- img(src="../../../assets/icons/burger.svg")
     ul.main-menu__list
-        each i in mainMenu
-            li.main-menu__item(data-id= i.id)
-                img(src= i.src)
-                .main-menu__caption= i.name
+        div
+            each i in mainMenu
+                li.main-menu__item(data-id= i.id)
+                    img(src= i.src)
+                    .main-menu__caption= i.name
 
-    each i in mainMenu
-        ul.main-menu__submenu(data-id= i.id)
-            each j in i.sub 
-                li
-                    a(href= j.href)
-                        img(src= j.img)
-                        span= j.name 
+                    ul.main-menu__submenu
+                        each j in i.sub 
+                            li.main-menu__submenu-item
+                                a(href= j.href)
+                                    img(src= j.img)
+                                    span= j.name 
 
 
 

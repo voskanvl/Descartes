@@ -13,7 +13,7 @@ import modal from "./ts/modal/modal"
 import feedback from "./ts/modal/feedback"
 import { ZodError, z } from "zod"
 
-switchSubmenu()
+// switchSubmenu()
 const slidesInstance = slides()
 const specificitySplide = slidesInstance.splides["specificity"]
 const monitorElement = document.querySelector<HTMLElement>(".specificity__monitor")!
